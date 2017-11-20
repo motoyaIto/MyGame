@@ -5,16 +5,70 @@
       <UniqueIdentifier>abf74c14-28d1-4207-a133-452818b38f9b</UniqueIdentifier>
       <Extensions>ico;cur;bmp;dds;dlg;fbx;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tga;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="DirectXResourse">
+      <UniqueIdentifier>{d6c7bf34-efa5-40a3-a2ac-bd8722c28d97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DirectXResourse\Line">
+      <UniqueIdentifier>{ceddb540-11a1-458a-84a4-f6aa83205420}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DirectXResourse\Obj3D">
+      <UniqueIdentifier>{f1cdac1c-5231-49dd-9726-9a652888005c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DirectXResourse\Line\Grid">
+      <UniqueIdentifier>{84aee65d-70f6-472d-b91a-0c4f02dfd7bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Camera">
+      <UniqueIdentifier>{ed60a246-9cc5-4245-9e81-fc710d82f754}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Text">
+      <UniqueIdentifier>{9e024978-a08a-4edb-b36f-2ed60dd1bc8a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="StepTimer.h" />
+    <ClInclude Include="DirectXResourse\DirectXResourse.h">
+      <Filter>DirectXResourse</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectXResourse\Obj3D\Obj3D.h">
+      <Filter>DirectXResourse\Obj3D</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectXResourse\Line\Line.h">
+      <Filter>DirectXResourse\Line</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectXResourse\Line\Grid\Grid.h">
+      <Filter>DirectXResourse\Line\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera\Camera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectXResourse\Text\Text.h">
+      <Filter>Text</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="DirectXResourse\DirectXResourse.cpp">
+      <Filter>DirectXResourse</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectXResourse\Obj3D\Obj3D.cpp">
+      <Filter>DirectXResourse\Obj3D</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectXResourse\Line\Line.cpp">
+      <Filter>DirectXResourse\Line</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectXResourse\Line\Grid\Grid.cpp">
+      <Filter>DirectXResourse\Line\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera\Camera.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectXResourse\Text\Text.cpp">
+      <Filter>Text</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />
