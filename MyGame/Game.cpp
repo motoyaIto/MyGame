@@ -5,6 +5,8 @@
 #include "pch.h"
 #include "Game.h"
 
+#include "Mouse//Mouse.h"
+
 extern void ExitGame();
 
 using namespace DirectX;
@@ -36,6 +38,25 @@ void Game::Initialize(HWND window, int width, int height)
     m_timer.SetFixedTimeStep(true);
     m_timer.SetTargetElapsedSeconds(1.0 / 60);
     */
+	//カメラ
+	m_camera = std::make_unique<Camera>(width, height);
+
+	//各種staticの初期化
+	DirectXResourse::InitializeStatic(m_d3dDevice, m_d3dContext);
+	Scene::SetWidth(width);
+	Scene::SetHeight(height);
+	Obj3D::InitializeStatic(m_camera.get());
+
+	//マウス
+	MouseCircumference* mouse = MouseCircumference::GetInstans();
+	mouse->SetMouseInWindow(window);
+
+	//シーンマネージャー
+	m_sceneManager = std::make_unique<SceneManager>();
+	m_sceneManager->Initialize();
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }
 
 // Executes the basic game loop.
@@ -55,6 +76,10 @@ void Game::Update(DX::StepTimer const& timer)
     float elapsedTime = float(timer.GetElapsedSeconds());
 
     // TODO: Add your game logic here.
+
+	//シーンマネージャーの更新
+	m_sceneManager->Update();
+
     elapsedTime;
 }
 
@@ -70,7 +95,16 @@ void Game::Render()
     Clear();
 
     // TODO: Add your rendering code here.
+	DirectX::CommonStates m_states(DirectXResourse::m_d3dDevice.Get());
 
+	DirectXResourse::m_d3dContext->OMSetBlendState(m_states.Opaque(), nullptr, 0xFFFFFFFF);
+	DirectXResourse::m_d3dContext->OMSetDepthStencilState(m_states.DepthNone(), 0);
+	DirectXResourse::m_d3dContext->RSSetState(m_states.CullNone());
+
+	m_sceneManager->Render();
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     Present();
 }
 

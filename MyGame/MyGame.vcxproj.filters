@@ -20,8 +20,29 @@
     <Filter Include="Camera">
       <UniqueIdentifier>{ed60a246-9cc5-4245-9e81-fc710d82f754}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Text">
+    <Filter Include="DirectXResourse\Text">
       <UniqueIdentifier>{9e024978-a08a-4edb-b36f-2ed60dd1bc8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{163e02cf-6598-4b69-bf37-a7cbaec0a59f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Play">
+      <UniqueIdentifier>{442fb721-53ee-4ae7-8bec-75fa7618c643}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MyMas">
+      <UniqueIdentifier>{7cd43fe8-2603-4054-94a0-b4b959a2ff44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Camera\DebugCamera">
+      <UniqueIdentifier>{ecd0ba74-fedc-47d2-9aff-9cd7db3e26c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mouse">
+      <UniqueIdentifier>{c5d756cc-08c4-4fba-ac9a-2ef337f40047}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MAP">
+      <UniqueIdentifier>{0aed6882-02e0-4d6d-880b-a0bfde180e53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Glound">
+      <UniqueIdentifier>{f86fc729-d616-4a85-90cb-912b88f8b41e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -44,7 +65,31 @@
       <Filter>Camera</Filter>
     </ClInclude>
     <ClInclude Include="DirectXResourse\Text\Text.h">
-      <Filter>Text</Filter>
+      <Filter>DirectXResourse\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\Play\Play.h">
+      <Filter>Scene\Play</Filter>
+    </ClInclude>
+    <ClInclude Include="MyMas\MyMas.h">
+      <Filter>MyMas</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera\DebugCamera\DebugCamera.h">
+      <Filter>Camera\DebugCamera</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\Scene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse\Mouse.h">
+      <Filter>Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SceneManager.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="MAP\MAP.h">
+      <Filter>MAP</Filter>
+    </ClInclude>
+    <ClInclude Include="Glound\Glound.h">
+      <Filter>Glound</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -67,7 +112,31 @@
       <Filter>Camera</Filter>
     </ClCompile>
     <ClCompile Include="DirectXResourse\Text\Text.cpp">
-      <Filter>Text</Filter>
+      <Filter>DirectXResourse\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\Play\Play.cpp">
+      <Filter>Scene\Play</Filter>
+    </ClCompile>
+    <ClCompile Include="MyMas\MyMas.cpp">
+      <Filter>MyMas</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera\DebugCamera\DebugCamera.cpp">
+      <Filter>Camera\DebugCamera</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\Scene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse\Mouse.cpp">
+      <Filter>Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\SceneManager.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="MAP\MAP.cpp">
+      <Filter>MAP</Filter>
+    </ClCompile>
+    <ClCompile Include="Glound\Glound.cpp">
+      <Filter>Glound</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -82,5 +151,22 @@
     <Manifest Include="settings.manifest">
       <Filter>Assets</Filter>
     </Manifest>
+  </ItemGroup>
+  <ItemGroup>
+    <MeshContentTask Include="Assets\Ground.FBX">
+      <Filter>Assets</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\Mount1.FBX">
+      <Filter>Assets</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\Mount2.FBX">
+      <Filter>Assets</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\PoisonSwamp.FBX">
+      <Filter>Assets</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\Pond.FBX">
+      <Filter>Assets</Filter>
+    </MeshContentTask>
   </ItemGroup>
 </Project>

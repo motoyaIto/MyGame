@@ -6,7 +6,19 @@
 
 #include "StepTimer.h"
 
+#include <memory>
 #include "DirectXResourse//DirectXResourse.h"
+#include "DirectXResourse//Obj3D//Obj3D.h"
+
+#include <d3d11_1.h>
+
+#include "Camera//Camera.h"
+#include "Scene//SceneManager.h"
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 // A basic game implementation that creates a D3D11 device and
 // provides a game loop.
@@ -63,4 +75,11 @@ private:
 
     // Rendering loop timer.
     DX::StepTimer                                   m_timer;
+
+	std::unique_ptr<SceneManager> m_sceneManager;
+
+	std::unique_ptr<Camera> m_camera;
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 };
