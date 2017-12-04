@@ -161,7 +161,7 @@ void MAP::Initialize()
 	{
 		for (int j = 0; j < m_gridNam; j++)//‰¡
 		{
-			switch (m_map[i * m_gridNam + j])
+			switch (m_map[i * (int)m_gridNam + j])
 			{
 			case N://‰½‚à‚È‚µ
 				m_countN++;
@@ -171,7 +171,7 @@ void MAP::Initialize()
 			case MOUNT2://ŽR2
 				this->CreateObj(m_mount1, L"Resources/Mount1.cmo", i, j, m_countMount1, 0.0f);
 
-				if (m_map[i * m_gridNam + j] >= MOUNT2)
+				if (m_map[i * (int)m_gridNam + j] >= MOUNT2)
 				{
 					this->CreateObj(m_mount2, L"Resources/Mount2.cmo", i, j, m_countMount2, 0.5f);
 				}
@@ -179,12 +179,12 @@ void MAP::Initialize()
 				break;
 
 			case POND://’r
-				this->CreateObj(m_pond, L"Resources/Pond.cmo", i, j, m_countPOND, 0.0f);
+				this->CreateObj(m_pond, L"Resources/Pond.cmo", i, j, m_countPOND, 0.05f);
 
 				break;
 
 			case POISON_SWAMP://“ÅÀ
-				this->CreateObj(m_PoisonSwamp, L"Resources/PoisonSwamp.cmo", i, j, m_countPOISON_SWAMP, 0.0f);
+				this->CreateObj(m_PoisonSwamp, L"Resources/PoisonSwamp.cmo", i, j, m_countPOISON_SWAMP, 0.05f);
 
 				break;
 			}

@@ -26,9 +26,9 @@ void Glound::Initialize()
 	{
 		for (int j = 0; j < m_wonRowNam; j++)//‰¡
 		{
-			m_glound[i * m_wonRowNam + j].LoadModel(L"Resources/Ground.cmo");
-			m_glound[i * m_wonRowNam + j].SetTranslation(Vector3(j - (m_wonRowNam / 2 - 0.5f), 0.0f, i - (m_wonRowNam / 2 - 0.5f)));
-			m_glound[i * m_wonRowNam + j].SetScale(Vector3(1.0f, 1.0f, 1.0f));
+			m_glound[i * (int)m_wonRowNam + j].LoadModel(L"Resources/Ground.cmo");
+			m_glound[i * (int)m_wonRowNam + j].SetTranslation(Vector3(j - (m_wonRowNam / 2 - 0.5f), 0.0f, i - (m_wonRowNam / 2 - 0.5f)));
+			m_glound[i * (int)m_wonRowNam + j].SetScale(Vector3(1.0f, 1.0f, 1.0f));
 		}
 	}
 }

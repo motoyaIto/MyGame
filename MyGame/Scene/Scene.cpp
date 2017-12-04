@@ -16,7 +16,9 @@ Scene::Scene()
 	//カメラ
 	m_camera = new Camera(s_width, s_height);
 
+	//オブジェクトのイニシャライズ
 	Obj3D::InitializeStatic(m_camera);
+
 
 	m_effect = new DirectX::BasicEffect(DirectXResourse::m_d3dDevice.Get());
 	
@@ -32,8 +34,8 @@ Scene::Scene()
 
 Scene::~Scene()
 {
-	delete m_camera;
-	delete m_text;
+	//delete m_camera;
+	//delete m_text;
 }
 
 void Scene::Initialize()

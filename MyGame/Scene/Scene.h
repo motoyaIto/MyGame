@@ -20,7 +20,7 @@ class Scene
 {
 protected:
 	using Vector2 = DirectX::SimpleMath::Vector2;
-
+	using Vector3 = DirectX::SimpleMath::Vector3;
 protected:
 	static int s_width;	//スクリーンサイズ(横)
 	static int s_height;//スクリーンサイズ(縦)

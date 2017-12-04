@@ -14,6 +14,7 @@ SceneManager::SceneManager()
 
 SceneManager::~SceneManager()
 {
+	delete m_scene;
 }
 
 void SceneManager::Initialize()

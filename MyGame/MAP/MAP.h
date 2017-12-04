@@ -32,7 +32,7 @@ private:
 
 	int m_CSVDateNam;
 	int* m_map;
-	int m_gridNam;
+	float m_gridNam;
 	
 
 	Obj3D* m_mount1;

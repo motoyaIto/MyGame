@@ -44,6 +44,15 @@
     <Filter Include="Glound">
       <UniqueIdentifier>{f86fc729-d616-4a85-90cb-912b88f8b41e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Player">
+      <UniqueIdentifier>{430f56c3-20a6-48fe-b9c8-d8e20c8c0b94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player\ButtonComand">
+      <UniqueIdentifier>{6e5a03a9-8b16-4342-88cd-b5925c1d8e26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player\ButtonComand\Comand">
+      <UniqueIdentifier>{cb4e5d90-b4eb-47f8-a87d-afc2375cf284}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -90,6 +99,15 @@
     </ClInclude>
     <ClInclude Include="Glound\Glound.h">
       <Filter>Glound</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\Player.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\ButtonComand\Comand\Comand.h">
+      <Filter>Player\ButtonComand\Comand</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\ButtonComand\ButtonComand.h">
+      <Filter>Player\ButtonComand</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +156,12 @@
     <ClCompile Include="Glound\Glound.cpp">
       <Filter>Glound</Filter>
     </ClCompile>
+    <ClCompile Include="Player\Player.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\ButtonComand\ButtonComand.cpp">
+      <Filter>Player\ButtonComand</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />
@@ -166,6 +190,9 @@
       <Filter>Assets</Filter>
     </MeshContentTask>
     <MeshContentTask Include="Assets\Pond.FBX">
+      <Filter>Assets</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\Player.FBX">
       <Filter>Assets</Filter>
     </MeshContentTask>
   </ItemGroup>

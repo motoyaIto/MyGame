@@ -177,6 +177,9 @@
     <ClInclude Include="Mouse\Mouse.h" />
     <ClInclude Include="MyMas\MyMas.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Player\ButtonComand\ButtonComand.h" />
+    <ClInclude Include="Player\ButtonComand\Comand\Comand.h" />
+    <ClInclude Include="Player\Player.h" />
     <ClInclude Include="Scene\Play\Play.h" />
     <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="Scene\SceneManager.h" />
@@ -202,6 +205,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Player\ButtonComand\ButtonComand.cpp" />
+    <ClCompile Include="Player\Player.cpp" />
     <ClCompile Include="Scene\Play\Play.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />
     <ClCompile Include="Scene\SceneManager.cpp" />
@@ -219,6 +224,7 @@
     <MeshContentTask Include="Assets\Ground.FBX" />
     <MeshContentTask Include="Assets\Mount1.FBX" />
     <MeshContentTask Include="Assets\Mount2.FBX" />
+    <MeshContentTask Include="Assets\Player.FBX" />
     <MeshContentTask Include="Assets\PoisonSwamp.FBX" />
     <MeshContentTask Include="Assets\Pond.FBX" />
   </ItemGroup>
