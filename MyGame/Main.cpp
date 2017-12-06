@@ -5,6 +5,8 @@
 #include "pch.h"
 #include "Game.h"
 
+#include <Keyboard.h>
+
 using namespace DirectX;
 
 namespace
@@ -264,6 +266,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_XBUTTONUP:
 	case WM_MOUSEHOVER:
 		Mouse::ProcessMessage(message, wParam, lParam);
+		break;
+
+	case WM_KEYDOWN:
+	case WM_KEYUP:
+	case WM_SYSKEYUP:
+		Keyboard::ProcessMessage(message, wParam, lParam);
 		break;
     }
 

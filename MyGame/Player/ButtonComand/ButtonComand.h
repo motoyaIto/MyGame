@@ -45,7 +45,9 @@ private:
 	Comand* buttonDown;
 	Comand* buttonRight;
 	Comand* buttonLeft;
-	Comand* buttonSpace;
+	
+	DirectX::Keyboard::State m_oldKeyState;
+
 public:
 	void HandleInput(Actor& Actor, DirectX::Keyboard& keyboard);
 
@@ -54,5 +56,5 @@ public://setter
 	void SetComandDown(Comand* cmd) { buttonDown = cmd; }//下キー
 	void SetComandRight(Comand* cmd) { buttonRight = cmd; }//右キー
 	void SetComandLeft(Comand* cmd) { buttonLeft = cmd; }//左キー
-	void SetComandSpace(Comand* cmd) { buttonSpace = cmd; }//スペースキー
+	
 };

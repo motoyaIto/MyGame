@@ -19,6 +19,8 @@ Scene::Scene()
 	//オブジェクトのイニシャライズ
 	Obj3D::InitializeStatic(m_camera);
 
+	//キーボード
+	m_keyboard = new DirectX::Keyboard();
 
 	m_effect = new DirectX::BasicEffect(DirectXResourse::m_d3dDevice.Get());
 	

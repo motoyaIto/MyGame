@@ -8,6 +8,7 @@
 #include <d3d11_1.h>
 
 #include <Effects.h>
+#include <Keyboard.h>
 #include <SimpleMath.h>
 #include <VertexTypes.h>
 
@@ -28,6 +29,9 @@ protected:
 protected:
 	Microsoft::WRL::ComPtr<ID3D11InputLayout> m_inputLayout;
 	DirectX::BasicEffect* m_effect;
+
+	DirectX::Keyboard* m_keyboard;//キーボード
+	DirectX::Keyboard::KeyboardStateTracker m_keyTracker;//キーボードトラッカー
 
 	Camera* m_camera;	//カメラ
 	Text* m_text;		//テキスト

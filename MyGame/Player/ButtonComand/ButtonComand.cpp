@@ -10,28 +10,25 @@ void InputHandler::HandleInput(Actor & Actor, DirectX::Keyboard & keyboard)
 {
 	DirectX::Keyboard::State keyState = keyboard.GetState();
 
-	if (keyState.Up)
+	if (keyState.Up && !m_oldKeyState.Up)
 	{
 		buttonUp->Execute(Actor);
 	}
 
-	if (keyState.Down)
+	if (keyState.Down && !m_oldKeyState.Down)
 	{
 		buttonDown->Execute(Actor);
 	}
 
-	if (keyState.Right)
+	if (keyState.Right && !m_oldKeyState.Right)
 	{
 		buttonRight->Execute(Actor);
 	}
 
-	if (keyState.Left)
+	if (keyState.Left && !m_oldKeyState.Left)
 	{
 		buttonLeft->Execute(Actor);
 	}
 
-	if (keyState.Space)
-	{
-		buttonSpace->Execute(Actor);
-	}
+	m_oldKeyState = keyState;
 }

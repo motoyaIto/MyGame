@@ -53,6 +53,9 @@
     <Filter Include="Player\ButtonComand\Comand">
       <UniqueIdentifier>{cb4e5d90-b4eb-47f8-a87d-afc2375cf284}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Dice">
+      <UniqueIdentifier>{b70cc6ae-17e9-4aca-bcf0-7dc79732e192}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -109,6 +112,9 @@
     <ClInclude Include="Player\ButtonComand\ButtonComand.h">
       <Filter>Player\ButtonComand</Filter>
     </ClInclude>
+    <ClInclude Include="Dice\Dice.h">
+      <Filter>Dice</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -162,6 +168,9 @@
     <ClCompile Include="Player\ButtonComand\ButtonComand.cpp">
       <Filter>Player\ButtonComand</Filter>
     </ClCompile>
+    <ClCompile Include="Dice\Dice.cpp">
+      <Filter>Dice</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />
@@ -193,6 +202,9 @@
       <Filter>Assets</Filter>
     </MeshContentTask>
     <MeshContentTask Include="Assets\Player.FBX">
+      <Filter>Assets</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\Flag.FBX">
       <Filter>Assets</Filter>
     </MeshContentTask>
   </ItemGroup>

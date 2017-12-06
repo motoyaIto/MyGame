@@ -166,6 +166,7 @@
   <ItemGroup>
     <ClInclude Include="Camera\Camera.h" />
     <ClInclude Include="Camera\DebugCamera\DebugCamera.h" />
+    <ClInclude Include="Dice\Dice.h" />
     <ClInclude Include="DirectXResourse\DirectXResourse.h" />
     <ClInclude Include="DirectXResourse\Line\Grid\Grid.h" />
     <ClInclude Include="DirectXResourse\Line\Line.h" />
@@ -188,6 +189,7 @@
   <ItemGroup>
     <ClCompile Include="Camera\Camera.cpp" />
     <ClCompile Include="Camera\DebugCamera\DebugCamera.cpp" />
+    <ClCompile Include="Dice\Dice.cpp" />
     <ClCompile Include="DirectXResourse\DirectXResourse.cpp" />
     <ClCompile Include="DirectXResourse\Line\Grid\Grid.cpp" />
     <ClCompile Include="DirectXResourse\Line\Line.cpp" />
@@ -221,6 +223,7 @@
     <Manifest Include="settings.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <MeshContentTask Include="Assets\Flag.FBX" />
     <MeshContentTask Include="Assets\Ground.FBX" />
     <MeshContentTask Include="Assets\Mount1.FBX" />
     <MeshContentTask Include="Assets\Mount2.FBX" />

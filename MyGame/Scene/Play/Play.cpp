@@ -5,6 +5,8 @@
 //Ito Motoya
 #include "Play.h"
 
+#include <string.h>
+
 Play::Play()
 {
 	//カメラ
@@ -45,14 +47,19 @@ void Play::Initialize()
 
 	//プレイヤー
 	m_player.Initialize();
-	m_player.SetTranslation(Vector3((1 - gridNam / 2) - 0.5, 0, (gridNam / 2) - 0.5));
+	m_player.SetTranslation(Vector3(-(gridNam / 2), 0.5, -(gridNam / 2)));
 	m_player.SetScale(Vector3(1.0f, 1.0f, 1.0f));
+
+	m_player.SetMap(&m_map);
 
 	//全体の半分から全体の半分の-1した数と0.5
 }
 
 void Play::Update()
 {
+	//キーボード
+	m_keyTracker.Update(m_keyboard->GetState());
+	
 	//マウス
 	MouseCircumference::GetInstans()->Update();
 	//カメラ
@@ -68,6 +75,7 @@ void Play::Update()
 
 
 	//プレイヤー
+	m_player.InputHandlerUpdate(*m_keyboard);
 	m_player.Update();
 	
 }

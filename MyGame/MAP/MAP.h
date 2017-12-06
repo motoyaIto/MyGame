@@ -10,9 +10,12 @@
 class MAP
 {
 private:
+	using Vector3 = DirectX::SimpleMath::Vector3;
+
+private:
 	static const float SENTERPOS;
 	
-private:
+public:
 	enum MAP_NAME
 	{
 		N,			//何もなし
@@ -23,22 +26,35 @@ private:
 
 	};
 
+	enum FLAGMAP_TIP
+	{
+		NONE,	//何もなし
+		RED,	//赤
+		BLUE,	//青
+		GREEN,	//緑
+		YELLOW,	//黄色
+	};
+
 private:
+	//各オブジェクトの数
 	int m_countN;
 	int m_countMount1;
 	int m_countMount2;
 	int m_countPOND;
 	int m_countPOISON_SWAMP;
 
-	int m_CSVDateNam;
-	int* m_map;
-	float m_gridNam;
+	int m_CSVDateNam;	//CSVデータの合計
+	int* m_map;			//マップデータ
+	float m_gridNam;	//一列の長さ
+	int* m_flagMap;		//フラグマップ
 	
-
+	//各オブジェクト
 	Obj3D* m_mount1;
 	Obj3D* m_mount2;
 	Obj3D* m_pond;
 	Obj3D* m_PoisonSwamp;
+
+	Obj3D* m_flagRed;//フラグ
 
 private://内部関数
 	void GetCSVFile(int fileNumber);// CSVファイルの読み込み
@@ -58,7 +74,19 @@ public:
 
 public://getter
 	int GetGridNam() { return m_gridNam; }
+	int GetMapDate(int i) { return m_map[i]; }
+
 public://setter
+	void SetFlagMap(FLAGMAP_TIP tip, Vector3 pos) 
+	{ 
+		int gritNamHalf = m_gridNam / 2;		//一列当たりのマスの数の半分
+		int datapos = gritNamHalf + pos.x + (((gritNamHalf + pos.z)) * m_gridNam);
 
-
+		if (m_flagMap[datapos] == FLAGMAP_TIP::NONE)
+		{
+			pos.y -= 0.5;
+			m_flagRed[datapos].SetTranslation(pos);
+			m_flagMap[datapos] = tip;
+		}
+	}
 };

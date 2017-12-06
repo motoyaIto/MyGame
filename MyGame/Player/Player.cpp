@@ -5,6 +5,25 @@
 //Ito Motoya
 #include "Player.h"
 
+
+//内部関数===================================================================
+float Player::TakePosY(Vector3 MovePos)
+{
+	int gritNamHalf = m_map->GetGridNam() / 2;		//一列当たりのマスの数の半分
+	Vector3 NextPos = m_player.GetTranslation() + MovePos;//次に進む場所の座標
+
+	int mapDataPos = gritNamHalf + NextPos.x + (((gritNamHalf + NextPos.z)) * m_map->GetGridNam());
+	int mapdata = m_map->GetMapDate(mapDataPos);
+
+	if (mapdata == MAP::POISON_SWAMP || mapdata == MAP::POND)
+	{
+		mapdata = 0;
+	}
+
+	return (mapdata + 1) * 0.5;
+}
+
+//public関数===================================================================
 Player::Player()
 {
 	//m_player = new Obj3D();
@@ -19,6 +38,11 @@ Player::~Player()
 
 void Player::Initialize()
 {
+	//キー設定
+	m_input.SetComandUp(&m_upComand);
+	m_input.SetComandDown(&m_DownComand);
+	m_input.SetComandRight(&m_RightComand);
+	m_input.SetComandLeft(&m_LeftComand);
 }
 
 void Player::Update()
@@ -29,4 +53,9 @@ void Player::Update()
 void Player::Render()
 {
 	m_player.Render();
+}
+
+void Player::InputHandlerUpdate(DirectX::Keyboard& keybord)
+{
+	m_input.HandleInput(*this, keybord);
 }
