@@ -56,6 +56,9 @@
     <Filter Include="Dice">
       <UniqueIdentifier>{b70cc6ae-17e9-4aca-bcf0-7dc79732e192}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DirectXResourse\Texture">
+      <UniqueIdentifier>{d8062542-8006-4b38-a141-75b0203f50d2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -103,9 +106,6 @@
     <ClInclude Include="Glound\Glound.h">
       <Filter>Glound</Filter>
     </ClInclude>
-    <ClInclude Include="Player\Player.h">
-      <Filter>Player</Filter>
-    </ClInclude>
     <ClInclude Include="Player\ButtonComand\Comand\Comand.h">
       <Filter>Player\ButtonComand\Comand</Filter>
     </ClInclude>
@@ -114,6 +114,12 @@
     </ClInclude>
     <ClInclude Include="Dice\Dice.h">
       <Filter>Dice</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\Player.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectXResourse\Texture\Texture.h">
+      <Filter>DirectXResourse\Texture</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -170,6 +176,9 @@
     </ClCompile>
     <ClCompile Include="Dice\Dice.cpp">
       <Filter>Dice</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectXResourse\Texture\Textuer.cpp">
+      <Filter>DirectXResourse\Texture</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

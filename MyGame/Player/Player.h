@@ -16,15 +16,15 @@
 #include "..//MAP//MAP.h"
 
 
-
-
 class Player : public Actor
 {
 private:
 	using Vector3 = DirectX::SimpleMath::Vector3;
 
 private:
-	Obj3D m_player;
+	Obj3D m_player;//プレイヤー
+
+	int* m_CountDice;
 
 	MAP* m_map;
 	//キー設定
@@ -53,11 +53,12 @@ public://setter
 	void SetTranslation(Vector3 pos) { m_player.SetTranslation(pos); }
 	void SetScale(Vector3 scale) { m_player.SetScale(scale); }
 	void SetMap(MAP* map) { m_map = map; }
+	void SetCountDice(int& countDice) { m_CountDice = &countDice; }
 
 
 public://コマンド
 
-	//上移動コマンド
+	   //上移動コマンド
 	void Up() override
 	{
 		Vector3 pos = m_player.GetTranslation();
@@ -67,6 +68,8 @@ public://コマンド
 			m_player.SetTranslation(Vector3(pos.x, posY, pos.z - 1));
 
 			m_map->SetFlagMap(MAP::RED, m_player.GetTranslation());
+
+			(*m_CountDice)--;
 		}
 	}
 
@@ -80,6 +83,8 @@ public://コマンド
 			m_player.SetTranslation(Vector3(pos.x, posY, pos.z + 1));
 
 			m_map->SetFlagMap(MAP::RED, m_player.GetTranslation());
+
+			(*m_CountDice)--;
 		}
 	}
 
@@ -93,6 +98,8 @@ public://コマンド
 			m_player.SetTranslation(Vector3(pos.x + 1, posY, pos.z));
 
 			m_map->SetFlagMap(MAP::RED, m_player.GetTranslation());
+
+			(*m_CountDice)--;
 		}
 	}
 
@@ -107,6 +114,8 @@ public://コマンド
 			m_player.SetTranslation(Vector3(pos.x - 1, posY, pos.z));
 
 			m_map->SetFlagMap(MAP::RED, m_player.GetTranslation());
+
+			(*m_CountDice)--;
 		}
 	}
 };

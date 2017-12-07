@@ -47,12 +47,23 @@ void Play::Initialize()
 
 	//プレイヤー
 	m_player.Initialize();
-	m_player.SetTranslation(Vector3(-(gridNam / 2), 0.5, -(gridNam / 2)));
+	m_player.SetTranslation(Vector3(-(gridNam / 2), 0.5, -(gridNam / 2)));//全体の半分から全体の半分の-1した数と0.5
 	m_player.SetScale(Vector3(1.0f, 1.0f, 1.0f));
 
 	m_player.SetMap(&m_map);
 
-	//全体の半分から全体の半分の-1した数と0.5
+	//サイコロ
+	m_dice.roll();
+	m_countDice = m_dice.GetNumber();
+	m_player.SetCountDice(m_countDice);
+	m_diceflag = new bool[4];
+
+	for (int i = 0; i < 4; i++)
+	{
+		m_diceflag[i] = false;
+	}
+
+	m_diceflag[0] = true;
 }
 
 void Play::Update()
@@ -78,6 +89,13 @@ void Play::Update()
 	m_player.InputHandlerUpdate(*m_keyboard);
 	m_player.Update();
 	
+	if (m_countDice <= 0)
+	{
+		m_dice.roll();
+		m_countDice = m_dice.GetNumber();
+		m_player.SetCountDice(m_countDice);
+		//m_diceflag
+	}
 }
 
 void Play::Render()
@@ -96,6 +114,8 @@ void Play::Render()
 
 	m_player.Render();
 
+	m_dice.SetDiceNamber(m_countDice);
+	m_dice.Render();
 	//デバック用////////////////////////////////////////////////////////////////
 	//シーン名を表示
 	Scene::m_text->Render(L"PlayScene");

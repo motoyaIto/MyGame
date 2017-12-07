@@ -171,6 +171,7 @@
     <ClInclude Include="DirectXResourse\Line\Grid\Grid.h" />
     <ClInclude Include="DirectXResourse\Line\Line.h" />
     <ClInclude Include="DirectXResourse\Obj3D\Obj3D.h" />
+    <ClInclude Include="DirectXResourse\Texture\Texture.h" />
     <ClInclude Include="DirectXResourse\Text\Text.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Glound\Glound.h" />
@@ -194,6 +195,7 @@
     <ClCompile Include="DirectXResourse\Line\Grid\Grid.cpp" />
     <ClCompile Include="DirectXResourse\Line\Line.cpp" />
     <ClCompile Include="DirectXResourse\Obj3D\Obj3D.cpp" />
+    <ClCompile Include="DirectXResourse\Texture\Textuer.cpp" />
     <ClCompile Include="DirectXResourse\Text\Text.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Glound\Glound.cpp" />

@@ -16,6 +16,7 @@ private://QÆ‚Å‚«‚éƒNƒ‰ƒX
 	friend class Obj3D;
 	friend class Text;
 	friend class Line;
+	friend class Texture;
 
 private://“à•”ŠÖ”
 	DirectXResourse();

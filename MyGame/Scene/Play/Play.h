@@ -12,6 +12,7 @@
 #include "..//..//Glound//Glound.h"
 #include "..//..//MAP//MAP.h"
 #include "..//..//Player//Player.h"
+#include "..//..//Dice//Dice.h"
 
 class Play : public Scene 
 {
@@ -21,6 +22,10 @@ private:
 	Glound m_glound;
 
 	Player m_player;
+
+	Dice m_dice;
+	int m_countDice;
+	bool* m_diceflag;
 
 public:
 	Play();
