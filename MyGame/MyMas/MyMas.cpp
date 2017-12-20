@@ -12,3 +12,12 @@ int MyMas::RoundUp(float a)
 
 	return a;
 }
+
+int MyMas::RoundDown(float a)
+{
+	if (a > (int)a)
+	{
+		return (int)a;
+	}
+	return a;
+}

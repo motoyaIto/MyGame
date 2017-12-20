@@ -5,6 +5,7 @@
 //Ito Motoya
 #include "Player.h"
 
+#include "..//MyMas//MyMas.h"
 
 //“à•”ŠÖ”===================================================================
 float Player::TakePosY(Vector3 MovePos)
@@ -15,9 +16,16 @@ float Player::TakePosY(Vector3 MovePos)
 	int mapDataPos = gritNamHalf + NextPos.x + (((gritNamHalf + NextPos.z)) * m_map->GetGridNam());
 	int mapdata = m_map->GetMapDate(mapDataPos);
 
+	//‚’á·‚ª0‚ÌêŠ
 	if (mapdata == MAP::POISON_SWAMP || mapdata == MAP::POND)
 	{
 		mapdata = 0;
+	}
+
+	//R
+	if (mapdata == MAP::MOUNT1 || mapdata == MAP::MOUNT2)
+	{
+		(*m_CountDice) += MyMas::RoundDown(m_player.GetTranslation().y) - mapdata;
 	}
 
 	return (mapdata + 1) * 0.5;

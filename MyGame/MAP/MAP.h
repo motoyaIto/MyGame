@@ -77,16 +77,27 @@ public://getter
 	int GetMapDate(int i) { return m_map[i]; }
 
 public://setter
-	void SetFlagMap(FLAGMAP_TIP tip, Vector3 pos) 
+	void SetFlagMap(FLAGMAP_TIP tip, Vector3 pos, int& countDice)
 	{ 
 		int gritNamHalf = m_gridNam / 2;		//ˆê—ñ“–‚½‚è‚Ìƒ}ƒX‚Ì”‚Ì”¼•ª
 		int datapos = gritNamHalf + pos.x + (((gritNamHalf + pos.z)) * m_gridNam);
 
+		//“ÅÀ‚¾‚Á‚½‚ç
+		if (m_map[datapos] == POISON_SWAMP)
+		{
+			countDice--;
+		}
+
+		//©w‚Å‚È‚¢ê‡
 		if (m_flagMap[datapos] == FLAGMAP_TIP::NONE)
 		{
 			pos.y -= 0.5;
 			m_flagRed[datapos].SetTranslation(pos);
 			m_flagMap[datapos] = tip;
+
+			return;
 		}
+
+		countDice++;//©w‚È‚Ì‚ÅÁ”ï‚µ‚È‚¢
 	}
 };
