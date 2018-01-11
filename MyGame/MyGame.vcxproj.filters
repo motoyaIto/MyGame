@@ -17,9 +17,6 @@
     <Filter Include="DirectXResourse\Line\Grid">
       <UniqueIdentifier>{84aee65d-70f6-472d-b91a-0c4f02dfd7bb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Camera">
-      <UniqueIdentifier>{ed60a246-9cc5-4245-9e81-fc710d82f754}</UniqueIdentifier>
-    </Filter>
     <Filter Include="DirectXResourse\Text">
       <UniqueIdentifier>{9e024978-a08a-4edb-b36f-2ed60dd1bc8a}</UniqueIdentifier>
     </Filter>
@@ -31,9 +28,6 @@
     </Filter>
     <Filter Include="MyMas">
       <UniqueIdentifier>{7cd43fe8-2603-4054-94a0-b4b959a2ff44}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Camera\DebugCamera">
-      <UniqueIdentifier>{ecd0ba74-fedc-47d2-9aff-9cd7db3e26c0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Mouse">
       <UniqueIdentifier>{c5d756cc-08c4-4fba-ac9a-2ef337f40047}</UniqueIdentifier>
@@ -59,6 +53,12 @@
     <Filter Include="DirectXResourse\Texture">
       <UniqueIdentifier>{d8062542-8006-4b38-a141-75b0203f50d2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Camera">
+      <UniqueIdentifier>{3ff4f98e-697d-4da0-8e23-8a460c891ffd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Camera\DebugCamera">
+      <UniqueIdentifier>{c88777be-1436-46bf-80a2-2c45888d26d8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -76,9 +76,6 @@
     <ClInclude Include="DirectXResourse\Line\Grid\Grid.h">
       <Filter>DirectXResourse\Line\Grid</Filter>
     </ClInclude>
-    <ClInclude Include="Camera\Camera.h">
-      <Filter>Camera</Filter>
-    </ClInclude>
     <ClInclude Include="DirectXResourse\Text\Text.h">
       <Filter>DirectXResourse\Text</Filter>
     </ClInclude>
@@ -87,9 +84,6 @@
     </ClInclude>
     <ClInclude Include="MyMas\MyMas.h">
       <Filter>MyMas</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera\DebugCamera\DebugCamera.h">
-      <Filter>Camera\DebugCamera</Filter>
     </ClInclude>
     <ClInclude Include="Scene\Scene.h">
       <Filter>Scene</Filter>
@@ -121,6 +115,12 @@
     <ClInclude Include="DirectXResourse\Texture\Texture.h">
       <Filter>DirectXResourse\Texture</Filter>
     </ClInclude>
+    <ClInclude Include="Camera\Camera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera\DebugCamera\DebugCamera.h">
+      <Filter>Camera\DebugCamera</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -138,9 +138,6 @@
     <ClCompile Include="DirectXResourse\Line\Grid\Grid.cpp">
       <Filter>DirectXResourse\Line\Grid</Filter>
     </ClCompile>
-    <ClCompile Include="Camera\Camera.cpp">
-      <Filter>Camera</Filter>
-    </ClCompile>
     <ClCompile Include="DirectXResourse\Text\Text.cpp">
       <Filter>DirectXResourse\Text</Filter>
     </ClCompile>
@@ -149,9 +146,6 @@
     </ClCompile>
     <ClCompile Include="MyMas\MyMas.cpp">
       <Filter>MyMas</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera\DebugCamera\DebugCamera.cpp">
-      <Filter>Camera\DebugCamera</Filter>
     </ClCompile>
     <ClCompile Include="Scene\Scene.cpp">
       <Filter>Scene</Filter>
@@ -179,6 +173,12 @@
     </ClCompile>
     <ClCompile Include="DirectXResourse\Texture\Textuer.cpp">
       <Filter>DirectXResourse\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera\Camera.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera\DebugCamera\DebugCamera.cpp">
+      <Filter>Camera\DebugCamera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
