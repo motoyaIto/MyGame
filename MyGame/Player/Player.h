@@ -7,7 +7,6 @@
 #include "ButtonComand//Comand//Comand.h"
 
 #include <d3d11_1.h>
-
 #include <SimpleMath.h>
 
 
@@ -23,6 +22,7 @@ private:
 
 private:
 	Obj3D m_player;//プレイヤー
+	MAP::FLAGMAP_TIP m_playerColor;//プレイヤーカラー
 
 	int* m_CountDice;
 
@@ -54,6 +54,7 @@ public://setter
 	void SetScale(Vector3 scale) { m_player.SetScale(scale); }
 	void SetMap(MAP* map) { m_map = map; }
 	void SetCountDice(int& countDice) { m_CountDice = &countDice; }
+	void SetPlayerColor(MAP::FLAGMAP_TIP color) { m_playerColor = color; }
 
 
 public://コマンド
@@ -67,7 +68,7 @@ public://コマンド
 			float posY = this->TakePosY(Vector3(0, 0, -1));
 			m_player.SetTranslation(Vector3(pos.x, posY, pos.z - 1));
 
-			m_map->SetFlagMap(MAP::RED, m_player.GetTranslation(), *m_CountDice);
+			m_map->SetFlagMap(m_playerColor, m_player.GetTranslation(), *m_CountDice);
 
 			(*m_CountDice)--;
 		}
@@ -82,7 +83,7 @@ public://コマンド
 			float posY = this->TakePosY(Vector3(0, 0, 1));
 			m_player.SetTranslation(Vector3(pos.x, posY, pos.z + 1));
 
-			m_map->SetFlagMap(MAP::RED, m_player.GetTranslation(), *m_CountDice);
+			m_map->SetFlagMap(m_playerColor, m_player.GetTranslation(), *m_CountDice);
 
 			(*m_CountDice)--;
 		}
@@ -97,7 +98,7 @@ public://コマンド
 			float posY = this->TakePosY(Vector3(1, 0, 0));
 			m_player.SetTranslation(Vector3(pos.x + 1, posY, pos.z));
 
-			m_map->SetFlagMap(MAP::RED, m_player.GetTranslation(), *m_CountDice);
+			m_map->SetFlagMap(m_playerColor, m_player.GetTranslation(), *m_CountDice);
 
 			(*m_CountDice)--;
 		}
@@ -113,7 +114,7 @@ public://コマンド
 			float posY = this->TakePosY(Vector3(-1, 0, 0));
 			m_player.SetTranslation(Vector3(pos.x - 1, posY, pos.z));
 
-			m_map->SetFlagMap(MAP::RED, m_player.GetTranslation(), *m_CountDice);
+			m_map->SetFlagMap(m_playerColor, m_player.GetTranslation(), *m_CountDice);
 
 			(*m_CountDice)--;
 		}

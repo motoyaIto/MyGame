@@ -22,15 +22,15 @@ float Player::TakePosY(Vector3 MovePos)
 		mapdata = 0;
 	}
 
-	//ŽR
-	if (mapdata == MAP::MOUNT1)
-	{
-		(*m_CountDice) += (int)m_player.GetTranslation().y - mapdata;
-	}
-	if (mapdata == MAP::MOUNT2)
-	{
-		(*m_CountDice) += MyMas::RoundUp(m_player.GetTranslation().y) - mapdata;
-	}
+	////ŽR
+	//if (mapdata == MAP::MOUNT1)
+	//{
+	//	(*m_CountDice) += (int)m_player.GetTranslation().y - mapdata;
+	//}
+	//if (mapdata == MAP::MOUNT2)
+	//{
+	//	(*m_CountDice) += MyMas::RoundUp(m_player.GetTranslation().y) - mapdata;
+	//}
 
 	return (mapdata + 1) * 0.5;
 }

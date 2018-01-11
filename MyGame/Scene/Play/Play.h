@@ -17,6 +17,14 @@
 class Play : public Scene 
 {
 private:
+	enum mode
+	{
+		ROLLDICE,
+		MOVESERECT,
+		MOVE,
+		MAPGIMMICK
+	};
+	
 	MAP m_map;
 	Grid m_grid;
 	Glound m_glound;

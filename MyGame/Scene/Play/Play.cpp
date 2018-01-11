@@ -51,6 +51,7 @@ void Play::Initialize()
 	m_player.SetScale(Vector3(1.0f, 1.0f, 1.0f));
 
 	m_player.SetMap(&m_map);
+	m_player.SetPlayerColor(MAP::RED);
 
 	//ÉTÉCÉRÉç
 	m_dice.roll();
