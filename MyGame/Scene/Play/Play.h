@@ -17,23 +17,37 @@
 class Play : public Scene 
 {
 private:
-	enum mode
+	static const int PLAYERNAM;
+
+	static const int DICENAM = 2;
+
+	enum GameManager
 	{
-		ROLLDICE,
-		MOVESERECT,
-		MOVE,
-		MAPGIMMICK
+		ROLLDICE,//サイコロを振る
+		MOVESERECT,//移動先を選ぶ
+		MOVE,//移動
+		MAPGIMMICK//ギミック
+	};
+
+	struct PlayerState
+	{
+		bool playing;
+		bool RollTwoDice;
 	};
 	
+	GameManager m_gameManager;
+
 	MAP m_map;
 	Grid m_grid;
 	Glound m_glound;
 
-	Player m_player;
-
-	Dice m_dice;
+	Player* m_player;
+	PlayerState* m_playerState;
+	
+	Dice m_dice[DICENAM];
 	int m_countDice;
-	bool* m_diceflag;
+
+	int m_countTime;
 
 public:
 	Play();

@@ -21,8 +21,17 @@ private:
 	using Vector3 = DirectX::SimpleMath::Vector3;
 
 private:
+	struct MoveFlag
+	{
+		bool Up;
+		bool Down;
+		bool Right;
+		bool Left;
+	};
+
 	Obj3D m_player;//プレイヤー
 	MAP::FLAGMAP_TIP m_playerColor;//プレイヤーカラー
+	MoveFlag m_moveFlag;
 
 	int* m_CountDice;
 
@@ -34,6 +43,8 @@ private:
 	DownComand m_DownComand;
 	RightComand m_RightComand;
 	LeftComand m_LeftComand;
+
+	int m_PlayerNamber;
 
 private:
 	float TakePosY(Vector3 MovePos);
@@ -47,76 +58,48 @@ public:
 
 	void InputHandlerUpdate(DirectX::Keyboard& keybord);
 
+	void Move();
+
+	bool ThcekMoveFlag();
+
+	void CreatePlayer(int grid);
+
 public://getter
-	Vector3 GetPosition() { m_player.GetTranslation(); }
+	Vector3 GetPosition() { return m_player.GetTranslation(); }
+
+	
 public://setter
+	void SetPlayerNamber(int namber) { if(namber < 4)m_PlayerNamber = namber; }
 	void SetTranslation(Vector3 pos) { m_player.SetTranslation(pos); }
 	void SetScale(Vector3 scale) { m_player.SetScale(scale); }
 	void SetMap(MAP* map) { m_map = map; }
 	void SetCountDice(int& countDice) { m_CountDice = &countDice; }
 	void SetPlayerColor(MAP::FLAGMAP_TIP color) { m_playerColor = color; }
 
-
 public://コマンド
 
 	   //上移動コマンド
 	void Up() override
 	{
-		Vector3 pos = m_player.GetTranslation();
-		if (-(m_map->GetGridNam() / 2) < pos.z)
-		{
-			float posY = this->TakePosY(Vector3(0, 0, -1));
-			m_player.SetTranslation(Vector3(pos.x, posY, pos.z - 1));
-
-			m_map->SetFlagMap(m_playerColor, m_player.GetTranslation(), *m_CountDice);
-
-			(*m_CountDice)--;
-		}
+		m_moveFlag.Up = true;
+		
 	}
 
 	//下移動コマンド
 	void Down() override
 	{
-		Vector3 pos = m_player.GetTranslation();
-		if (m_map->GetGridNam() / 2 > pos.z)
-		{
-			float posY = this->TakePosY(Vector3(0, 0, 1));
-			m_player.SetTranslation(Vector3(pos.x, posY, pos.z + 1));
-
-			m_map->SetFlagMap(m_playerColor, m_player.GetTranslation(), *m_CountDice);
-
-			(*m_CountDice)--;
-		}
+		m_moveFlag.Down = true;
 	}
 
 	//右移動コマンド
 	void Right() override
 	{
-		Vector3 pos = m_player.GetTranslation();
-		if (m_map->GetGridNam() / 2 > pos.x)
-		{
-			float posY = this->TakePosY(Vector3(1, 0, 0));
-			m_player.SetTranslation(Vector3(pos.x + 1, posY, pos.z));
-
-			m_map->SetFlagMap(m_playerColor, m_player.GetTranslation(), *m_CountDice);
-
-			(*m_CountDice)--;
-		}
+		m_moveFlag.Right = true;
 	}
 
 	//左移動コマンド
 	void Left() override
 	{
-		Vector3 pos = m_player.GetTranslation();
-
-		if (-(m_map->GetGridNam() / 2) < pos.x)
-		{
-			float posY = this->TakePosY(Vector3(-1, 0, 0));
-			m_player.SetTranslation(Vector3(pos.x - 1, posY, pos.z));
-
-			m_map->SetFlagMap(m_playerColor, m_player.GetTranslation(), *m_CountDice);
-
-			(*m_CountDice)--;
-		}
+		m_moveFlag.Left = true;
 	}
 };

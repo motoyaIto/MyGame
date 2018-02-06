@@ -28,11 +28,11 @@ public:
 
 	enum FLAGMAP_TIP
 	{
-		NONE,	//âΩÇ‡Ç»Çµ
 		RED,	//ê‘
 		BLUE,	//ê¬
 		GREEN,	//óŒ
 		YELLOW,	//â©êF
+		NONE,
 	};
 
 private:

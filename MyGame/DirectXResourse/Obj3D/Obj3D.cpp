@@ -121,9 +121,6 @@ void Obj3D::Render()
 void Obj3D::LoadModel(const wchar_t * fileName)
 {
 	m_model = Model::CreateFromCMO(m_d3dDevice.Get(), fileName, *m_factory);
-
-	//ƒƒbƒVƒ…‚Ì‰ò‚ðŽæ“¾
-	m_meshes = &m_model->meshes;
 }
 
 

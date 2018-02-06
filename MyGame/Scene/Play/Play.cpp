@@ -7,7 +7,11 @@
 
 #include <string.h>
 
+const int Play::PLAYERNAM = 4;
+
 Play::Play()
+	: m_gameManager(ROLLDICE)
+	, m_countTime(0)
 {
 	//カメラ
 	Scene::m_camera = new DebugCamera(Scene::s_width, Scene::s_height);
@@ -46,29 +50,35 @@ void Play::Initialize()
 	m_glound.Initialize();
 
 	//プレイヤー
-	m_player.Initialize();
-	m_player.SetTranslation(Vector3(-(gridNam / 2), 0.5, -(gridNam / 2)));//全体の半分から全体の半分の-1した数と0.5
-	m_player.SetScale(Vector3(1.0f, 1.0f, 1.0f));
+	m_player = new Player[PLAYERNAM]();
+	m_playerState = new PlayerState[PLAYERNAM]();
 
-	m_player.SetMap(&m_map);
-	m_player.SetPlayerColor(MAP::RED);
-
-	//サイコロ
-	m_dice.roll();
-	m_countDice = m_dice.GetNumber();
-	m_player.SetCountDice(m_countDice);
-	m_diceflag = new bool[4];
-
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < PLAYERNAM; i++)
 	{
-		m_diceflag[i] = false;
+		m_player[i].SetPlayerNamber(i);
+		m_player[i].CreatePlayer(gridNam);
+		m_player[i].Initialize();
+
+		m_player[i].SetMap(&m_map);
+
+		m_playerState[i].playing = false;
+		m_playerState[i].RollTwoDice = false;
 	}
 
-	m_diceflag[0] = true;
+	m_playerState[0].playing = true;
+
+	//サイコロ
+	/*m_dice.roll();
+	m_countDice = m_dice.GetNumber();
+	m_player.SetCountDice(m_countDice);*/
+	
 }
 
 void Play::Update()
 {
+	static int count = 0;
+	int dicenamber = 0;
+
 	//キーボード
 	m_keyTracker.Update(m_keyboard->GetState());
 	
@@ -84,18 +94,65 @@ void Play::Update()
 	m_grid.SetProj(m_camera->GetProj());
 	m_grid.SetView(m_camera->GetView());
 	m_grid.Update();
-
-
-	//プレイヤー
-	m_player.InputHandlerUpdate(*m_keyboard);
-	m_player.Update();
 	
-	if (m_countDice <= 0)
+	//プレイヤー
+	for (int i = 0; i < PLAYERNAM; i++)
 	{
-		m_dice.roll();
-		m_countDice = m_dice.GetNumber();
-		m_player.SetCountDice(m_countDice);
-		//m_diceflag
+		if (m_playerState[i].playing == true)
+		{
+			m_player[i].InputHandlerUpdate(*m_keyboard);
+
+			switch (m_gameManager)
+			{
+			case ROLLDICE://サイコロを振る
+
+				m_countDice = 0;
+
+				//サイコロが1つの場合
+				if (m_playerState[i].RollTwoDice == false)
+				{
+					m_dice[0].roll();
+					m_countDice = m_dice[0].GetNumber();
+					
+				}
+				else//サイコロが2つの場合
+				{
+					for (int i = 0; i < DICENAM; i++)
+					{
+						m_dice[i].roll();
+
+						m_countDice += m_dice[i].GetNumber();
+					}
+				}
+
+				m_countTime++;
+
+				if (m_countTime / 60 >= 2)
+				{
+					//サイコロの目の数を登録
+					m_player[i].SetCountDice(m_countDice);
+
+					m_gameManager = MOVESERECT;
+
+					m_countTime = 0;
+				}				
+				break;
+			case MOVESERECT://移動先を選ぶ
+				break;
+			case MOVE://移動
+				break;
+
+			case MAPGIMMICK://ギミック
+				break;
+			}
+		}
+	}
+
+	
+
+	for (int i = 0; i < PLAYERNAM; i++)
+	{
+		m_player[i].Update();
 	}
 }
 
@@ -113,10 +170,30 @@ void Play::Render()
 	m_map.Render();
 	m_grid.Render(); 
 
-	m_player.Render();
-
-	m_dice.SetDiceNamber(m_countDice);
-	m_dice.Render();
+	for (int i = 0; i < PLAYERNAM; i++)
+	{
+		m_player[i].Render();
+	}
+	
+	for (int i = 0; i < PLAYERNAM; i++)
+	{
+		if (m_playerState[i].playing == true)
+		{
+			if (m_playerState[i].RollTwoDice == false)
+			{
+				m_dice[0].SetDiceNamber(m_countDice);
+				m_dice[0].Render();
+			}
+			else
+			{
+				for (int i = 0; i < DICENAM; i++)
+				{
+					m_dice[i].SetDiceNamber(m_countDice);
+					m_dice[i].Render();
+				}
+			}
+		}
+	}
 	//デバック用////////////////////////////////////////////////////////////////
 	//シーン名を表示
 	Scene::m_text->Render(L"PlayScene");
