@@ -26,14 +26,7 @@ public:
 
 	};
 
-	enum FLAGMAP_TIP
-	{
-		RED,	//赤
-		BLUE,	//青
-		GREEN,	//緑
-		YELLOW,	//黄色
-		NONE,
-	};
+	
 
 private:
 	//各オブジェクトの数
@@ -53,8 +46,6 @@ private:
 	Obj3D* m_mount2;
 	Obj3D* m_pond;
 	Obj3D* m_PoisonSwamp;
-
-	Obj3D* m_flagRed;//フラグ
 
 private://内部関数
 	void GetCSVFile(int fileNumber);// CSVファイルの読み込み
@@ -92,8 +83,8 @@ public://setter
 		if (m_flagMap[datapos] == FLAGMAP_TIP::NONE)
 		{
 			pos.y -= 0.5;
-			m_flagRed[datapos].SetTranslation(pos);
-			m_flagMap[datapos] = tip;
+			//m_flagRed[datapos].SetTranslation(pos);
+			//m_flagMap[datapos] = tip;
 
 			return;
 		}

@@ -210,9 +210,6 @@
     <MeshContentTask Include="Assets\Pond.FBX">
       <Filter>Assets</Filter>
     </MeshContentTask>
-    <MeshContentTask Include="Assets\Flag.FBX">
-      <Filter>Assets</Filter>
-    </MeshContentTask>
     <MeshContentTask Include="Assets\Player.FBX">
       <Filter>Assets</Filter>
     </MeshContentTask>
@@ -223,6 +220,18 @@
       <Filter>Assets</Filter>
     </MeshContentTask>
     <MeshContentTask Include="Assets\Player3.FBX">
+      <Filter>Assets</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\GreenFlag.FBX">
+      <Filter>Assets</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\RedFlag.FBX">
+      <Filter>Assets</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\YellowFlag.FBX">
+      <Filter>Assets</Filter>
+    </MeshContentTask>
+    <MeshContentTask Include="Assets\BlueFlag.FBX">
       <Filter>Assets</Filter>
     </MeshContentTask>
   </ItemGroup>

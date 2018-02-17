@@ -14,6 +14,8 @@
 #include "..//..//Player//Player.h"
 #include "..//..//Dice//Dice.h"
 
+#include "..//..//DirectXResourse//Obj3D//Obj3D.h"
+
 class Play : public Scene 
 {
 private:
@@ -35,19 +37,32 @@ private:
 		bool RollTwoDice;
 	};
 	
-	GameManager m_gameManager;
+	enum FLAGMAP_TIP
+	{
+		NONE,
+		RED,	//赤
+		BLUE,	//青
+		GREEN,	//緑
+		YELLOW,	//黄色
+	};
 
-	MAP m_map;
-	Grid m_grid;
-	Glound m_glound;
+	GameManager m_gameManager;//ゲームのコントローラー
 
-	Player* m_player;
-	PlayerState* m_playerState;
+	MAP m_map;//マップ
+	FLAGMAP_TIP* m_flagMAP;
+	Grid m_grid;//グリット
+	Glound m_glound;//床
+
+	Player* m_player;//プレイヤー
+	PlayerState* m_playerState;//プレイヤーのコントロール状態
 	
-	Dice m_dice[DICENAM];
-	int m_countDice;
+	Dice m_dice[DICENAM];//サイコロ
+	int m_countDice;//ダイスからの移動
 
-	int m_countTime;
+	Obj3D* m_RedFlag;
+	Obj3D* m_BlueFlag;
+	Obj3D* m_GreenFlag;
+	Obj3D* m_yerowllFlag;
 
 public:
 	Play();

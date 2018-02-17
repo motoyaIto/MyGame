@@ -225,7 +225,8 @@
     <Manifest Include="settings.manifest" />
   </ItemGroup>
   <ItemGroup>
-    <MeshContentTask Include="Assets\Flag.FBX" />
+    <MeshContentTask Include="Assets\BlueFlag.FBX" />
+    <MeshContentTask Include="Assets\GreenFlag.FBX" />
     <MeshContentTask Include="Assets\Ground.FBX" />
     <MeshContentTask Include="Assets\Mount1.FBX" />
     <MeshContentTask Include="Assets\Mount2.FBX" />
@@ -235,6 +236,8 @@
     <MeshContentTask Include="Assets\Player4.FBX" />
     <MeshContentTask Include="Assets\PoisonSwamp.FBX" />
     <MeshContentTask Include="Assets\Pond.FBX" />
+    <MeshContentTask Include="Assets\RedFlag.FBX" />
+    <MeshContentTask Include="Assets\YellowFlag.FBX" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

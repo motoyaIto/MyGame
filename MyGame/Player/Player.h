@@ -12,7 +12,6 @@
 
 #include "ButtonComand//ButtonComand.h"
 #include "..//DirectXResourse//Obj3D//Obj3D.h"
-#include "..//MAP//MAP.h"
 
 
 class Player : public Actor
@@ -30,12 +29,9 @@ private:
 	};
 
 	Obj3D m_player;//プレイヤー
-	MAP::FLAGMAP_TIP m_playerColor;//プレイヤーカラー
+	//MAP::FLAGMAP_TIP m_playerColor;//プレイヤーカラー
 	MoveFlag m_moveFlag;
 
-	int* m_CountDice;
-
-	MAP* m_map;
 	//キー設定
 	InputHandler m_input;
 
@@ -47,7 +43,7 @@ private:
 	int m_PlayerNamber;
 
 private:
-	float TakePosY(Vector3 MovePos);
+	
 public:
 	Player();
 	~Player();
@@ -58,7 +54,7 @@ public:
 
 	void InputHandlerUpdate(DirectX::Keyboard& keybord);
 
-	void Move();
+	void Move(int gridNam);
 
 	bool ThcekMoveFlag();
 
@@ -66,15 +62,13 @@ public:
 
 public://getter
 	Vector3 GetPosition() { return m_player.GetTranslation(); }
-
+	//MAP::FLAGMAP_TIP GetPlayerColor() { return m_playerColor; }
 	
 public://setter
 	void SetPlayerNamber(int namber) { if(namber < 4)m_PlayerNamber = namber; }
 	void SetTranslation(Vector3 pos) { m_player.SetTranslation(pos); }
 	void SetScale(Vector3 scale) { m_player.SetScale(scale); }
-	void SetMap(MAP* map) { m_map = map; }
-	void SetCountDice(int& countDice) { m_CountDice = &countDice; }
-	void SetPlayerColor(MAP::FLAGMAP_TIP color) { m_playerColor = color; }
+	//void SetPlayerColor(MAP::FLAGMAP_TIP color) { m_playerColor = color; }
 
 public://コマンド
 

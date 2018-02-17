@@ -94,8 +94,6 @@ MAP::MAP()
 
 	, m_mount1(nullptr), m_mount2(nullptr)
 	, m_pond(nullptr), m_PoisonSwamp(nullptr)
-
-	, m_flagRed(nullptr)
 {
 	
 }
@@ -196,15 +194,6 @@ void MAP::Initialize()
 			}
 		}
 	}
-
-	m_flagRed = new Obj3D[m_gridNam * m_gridNam];
-
-	for (int i = 0; i < m_gridNam * m_gridNam; i++)
-	{
-		m_flagRed[i].LoadModel(L"Resources/Flag.cmo");
-		m_flagRed[i].SetTranslation(Vector3(0, 0, 0));
-		m_flagRed[i].SetScale(Vector3(0.1f, 0.1f, 0.1f));
-	}
 }
 /// <summary>
 /// 更新
@@ -233,12 +222,6 @@ void MAP::Update()
 	for (int i = 0; i < m_countPOISON_SWAMP; i++)
 	{
 		m_PoisonSwamp[i].UpdateO();
-	}
-
-	//フラグ
-	for (int i = 0; i < m_gridNam * m_gridNam; i++)
-	{
-		m_flagRed[i].UpdateO();
 	}
 }
 
@@ -272,11 +255,11 @@ void MAP::Render()
 	}
 
 	//フラグ
-	for (int i = 0; i < m_gridNam * m_gridNam; i++)
+	/*for (int i = 0; i < m_gridNam * m_gridNam; i++)
 	{
 		if (m_flagMap[i] == FLAGMAP_TIP::RED)
 		{
 			m_flagRed[i].Render();
 		}
-	}
+	}*/
 }
