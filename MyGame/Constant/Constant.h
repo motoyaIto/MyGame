@@ -1,0 +1,10 @@
+#pragma once
+
+enum FLAGMAP_TIP
+{
+	NONE,
+	RED,	//ê‘
+	BLUE,	//ê¬
+	GREEN,	//óŒ
+	YELLOW,	//â©êF
+};

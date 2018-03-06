@@ -11,9 +11,6 @@ const int Play::PLAYERNAM = 4;
 
 Play::Play()
 	: m_gameManager(ROLLDICE)
-
-	, m_RedFlag(nullptr), m_BlueFlag(nullptr)
-	, m_GreenFlag(nullptr), m_yerowllFlag(nullptr)
 {
 	//カメラ
 	Scene::m_camera = new DebugCamera(Scene::s_width, Scene::s_height);
@@ -43,13 +40,9 @@ void Play::Initialize()
 
 	int gridNam = m_map.GetGridNam();
 
-	//フラグマップ
-	m_flagMAP = new FLAGMAP_TIP[gridNam * gridNam];
+	//フラグ
+	m_flag = new Flag[gridNam * gridNam];
 
-	for (int i = 0; i < gridNam * gridNam; i++)
-	{
-		m_flagMAP[i] = FLAGMAP_TIP::NONE;
-	}
 	//グリット
 	m_grid.SetWonRowNam(gridNam);
 	m_grid.Initialize();
@@ -71,8 +64,8 @@ void Play::Initialize()
 
 	m_playerState[0].playing = true;
 
-	//フラグ
-	m_RedFlag = new Obj3D;
+	
+	
 	
 	//サイコロ
 	/*m_dice.roll();
@@ -103,6 +96,26 @@ void Play::Update()
 		if (m_playerState[i].playing == true)
 		{
 			static int countTime = 0;
+
+			int DecreaseDice = 1;//サイコロの減らす数
+			Vector3 playerPos = m_player[i].GetPosition();//プレイヤーの今のポジション
+
+			
+			int gritNamHalf = m_map.GetGridNam() / 2;		//一列当たりのマスの数の半分
+			int datapos = gritNamHalf + m_player[i].GetPosition().x + (((gritNamHalf + m_player[i].GetPosition().z)) * m_map.GetGridNam());//一次元配列の位置
+
+			float x = datapos % m_map.GetGridNam() - gritNamHalf;//x座標
+			float y = 0;//y座標
+			if (m_map.GetMapDate(datapos) == MAP::MAP_NAME::MOUNT1)
+			{
+				y = 0.5;
+			}
+
+			if (m_map.GetMapDate(datapos) == MAP::MAP_NAME::MOUNT2)
+			{
+				y = 1.0f;
+			}
+			float z = datapos / m_map.GetGridNam() - (m_map.GetGridNam() / 2);//z座標
 
 			//今プレイしているモード
 			switch (m_gameManager)
@@ -154,12 +167,34 @@ void Play::Update()
 				
 				break;
 			case MOVE://移動
-				m_player[i].Move(m_map.GetGridNam());
+				
+				////フラグが立っていない場合
+				if (m_flag[datapos].GetFlagType() == FLAGMAP_TIP::NONE)
+				{
+					m_player[i].Move(m_map.GetGridNam());
+					//自分のフラグを立てる
+					m_flag[datapos].CreateFlag(m_player[i].GetPlayerColor(), x, y, z);
+				}
+				else
+				{
+					//自分のフラグの場合移動にかかるコストを一つ減らす
+					if (m_flag[datapos].GetFlagType() == m_player[i].GetPlayerColor())
+					{
+						m_player[i].Move(m_map.GetGridNam());
+
+						DecreaseDice -= 1;
+					}
+				//	else//敵フラグ
+				//	{
+
+				//	}
+				}
+
+				
 
 				m_gameManager = MAPGIMMICK;
 
-				m_countDice--;
-
+				m_countDice -= DecreaseDice;
 				break;
 
 			case MAPGIMMICK://ギミック
@@ -197,10 +232,15 @@ void Play::Update()
 	}
 
 	
-
 	for (int i = 0; i < PLAYERNAM; i++)
 	{
 		m_player[i].Update();
+	}
+
+	//旗
+	for (int i = 0; i < m_map.GetGridNam() * m_map.GetGridNam(); i++)
+	{
+		m_flag[i].Update();
 	}
 }
 
@@ -214,19 +254,22 @@ void Play::Render()
 	m_effect->Apply(DirectXResourse::m_d3dContext.Get());
 	DirectXResourse::m_d3dContext->IASetInputLayout(m_inputLayout.Get());
 
+	//床
 	m_glound.Render();
+	//マップ
 	m_map.Render();
+	//マス目
 	m_grid.Render(); 
 
+	//プレイヤー	
 	for (int i = 0; i < PLAYERNAM; i++)
 	{
 		m_player[i].Render();
-	}
-	
-	for (int i = 0; i < PLAYERNAM; i++)
-	{
+
+		//行動するプレイヤーならば
 		if (m_playerState[i].playing == true)
 		{
+			//サイコロの表示
 			if (m_playerState[i].RollTwoDice == false)
 			{
 				m_dice[0].SetDiceNamber(m_countDice);
@@ -242,6 +285,13 @@ void Play::Render()
 			}
 		}
 	}
+
+	//旗
+	for (int i = 0; i < m_map.GetGridNam() * m_map.GetGridNam(); i++)
+	{
+		m_flag[i].Render();
+	}
+
 	//デバック用////////////////////////////////////////////////////////////////
 	//シーン名を表示
 	Scene::m_text->Render(L"PlayScene");
