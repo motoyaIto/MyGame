@@ -8,3 +8,12 @@ enum FLAGMAP_TIP
 	GREEN,	//óŒ
 	YELLOW,	//â©êF
 };
+
+enum MOVE_KEY
+{
+	UP,		//è„
+	DOWN,	//â∫
+	RIGHT,	//âE
+	LEFT,	//ç∂
+	NOT,
+};

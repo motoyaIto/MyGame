@@ -65,10 +65,15 @@ public:
 
 	void CreatePlayer(int grid);
 
+	void ResetMoveKey(MOVE_KEY key);
+
 public://getter
 	Vector3 GetPosition() { return m_player.GetTranslation(); }
 	FLAGMAP_TIP GetPlayerColor() { return m_myColor; }
-	MoveFlag& GetMoveFlag() { return m_moveFlag; }
+	//MoveFlag& GetMoveFlag() { return m_moveFlag; }
+
+	MOVE_KEY GetMoveKey();
+
 	
 public://setter
 	void SetPlayerNamber(int namber) { if(namber < 4)m_PlayerNamber = namber; }

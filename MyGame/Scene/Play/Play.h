@@ -59,6 +59,13 @@ private:
 	//Obj3D* m_GreenFlag;		//フラグ(緑)
 	//Obj3D* m_yerowllFlag;	//フラグ(黄色)
 
+private:
+	int ValueToCalculateNextData(Player& player);//次の移動先のデータの位置を計算するための値
+
+	bool MoveChecker(Player& player, int datapos);//移動できる(true)出来ない(false)
+
+	void ResetPlayerMove(Player& player, MOVE_KEY key, Vector3 resetPos); //確認したプレイヤーの移動をなしにする
+
 public:
 	Play();
 	~Play();
@@ -67,4 +74,5 @@ public:
 	void Update() override;
 	void Render() override;
 
+	
 };
