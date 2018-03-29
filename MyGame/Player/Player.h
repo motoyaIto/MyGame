@@ -13,11 +13,16 @@
 #include "ButtonComand//ButtonComand.h"
 #include "..//DirectXResourse//Obj3D//Obj3D.h"
 
+#include "..//Constant//Constant.h"
+
 
 class Player : public Actor
 {
 private:
 	using Vector3 = DirectX::SimpleMath::Vector3;
+
+public:
+	
 
 private:
 	struct MoveFlag
@@ -42,8 +47,8 @@ private:
 
 	int m_PlayerNamber;
 
-private:
-	
+	FLAGMAP_TIP m_myColor;
+
 public:
 	Player();
 	~Player();
@@ -60,15 +65,21 @@ public:
 
 	void CreatePlayer(int grid);
 
+	void ResetMoveKey(MOVE_KEY key);
+
 public://getter
 	Vector3 GetPosition() { return m_player.GetTranslation(); }
-	//MAP::FLAGMAP_TIP GetPlayerColor() { return m_playerColor; }
+	FLAGMAP_TIP GetPlayerColor() { return m_myColor; }
+	//MoveFlag& GetMoveFlag() { return m_moveFlag; }
+
+	MOVE_KEY GetMoveKey();
+
 	
 public://setter
 	void SetPlayerNamber(int namber) { if(namber < 4)m_PlayerNamber = namber; }
 	void SetTranslation(Vector3 pos) { m_player.SetTranslation(pos); }
 	void SetScale(Vector3 scale) { m_player.SetScale(scale); }
-	//void SetPlayerColor(MAP::FLAGMAP_TIP color) { m_playerColor = color; }
+	void SetPlayerColor(FLAGMAP_TIP color) { m_myColor = color; }
 
 public://ƒRƒ}ƒ“ƒh
 

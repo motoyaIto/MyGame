@@ -166,6 +166,7 @@
   <ItemGroup>
     <ClInclude Include="Camera\Camera.h" />
     <ClInclude Include="Camera\DebugCamera\DebugCamera.h" />
+    <ClInclude Include="Constant\Constant.h" />
     <ClInclude Include="Dice\Dice.h" />
     <ClInclude Include="DirectXResourse\DirectXResourse.h" />
     <ClInclude Include="DirectXResourse\Line\Grid\Grid.h" />
@@ -173,6 +174,7 @@
     <ClInclude Include="DirectXResourse\Obj3D\Obj3D.h" />
     <ClInclude Include="DirectXResourse\Texture\Texture.h" />
     <ClInclude Include="DirectXResourse\Text\Text.h" />
+    <ClInclude Include="Flag\Flag.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Glound\Glound.h" />
     <ClInclude Include="MAP\MAP.h" />
@@ -197,6 +199,7 @@
     <ClCompile Include="DirectXResourse\Obj3D\Obj3D.cpp" />
     <ClCompile Include="DirectXResourse\Texture\Textuer.cpp" />
     <ClCompile Include="DirectXResourse\Text\Text.cpp" />
+    <ClCompile Include="Flag\Flag.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Glound\Glound.cpp" />
     <ClCompile Include="Main.cpp" />

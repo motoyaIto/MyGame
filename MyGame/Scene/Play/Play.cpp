@@ -7,13 +7,144 @@
 
 #include <string.h>
 
+#include "..//..//Constant//Constant.h"
+
 const int Play::PLAYERNAM = 4;
+
+//private関数========================================================================================
+/// <summary>
+/// 次の移動先のデータの位置を計算するための値を出す
+/// </summary>
+/// <param name="player">プレイヤー</param>
+/// <returns>計算するための値</returns>
+int Play::ValueToCalculateNextData(Player& player)
+{
+	switch (player.GetMoveKey())
+	{
+	case MOVE_KEY::UP:
+		return -m_map.GetGridNam();
+		break;
+
+	case MOVE_KEY::DOWN:
+		return m_map.GetGridNam();
+		break;
+
+	case MOVE_KEY::RIGHT:
+		return 1;
+		break;
+
+	case MOVE_KEY::LEFT:
+		return -1;
+		break;
+	}
+
+	return 0;
+}
+
+/// <summary>
+/// 移動できるか確認する
+/// </summary>
+/// <param name="player">確認するプレイヤー</param>
+/// <returns>移動できる(true)出来ない(false)</returns>
+bool Play::MoveChecker(Player& player, int datapos)
+{
+	Vector3 pos = player.GetPosition();
+
+	switch (player.GetMoveKey())
+	{
+	case MOVE_KEY::UP:
+		//壁
+		if (-(m_map.GetGridNam() / 2) >= pos.z)
+		{
+			this->ResetPlayerMove(player, MOVE_KEY::UP, Vector3(pos.x, pos.y, pos.z));
+
+			return false;
+		}
+		
+		//敵
+		if (m_flag[datapos].GetFlagType() != FLAGMAP_TIP::NONE && m_flag[datapos].GetFlagType() != player.GetPlayerColor())
+		{
+			this->ResetPlayerMove(player, MOVE_KEY::UP, Vector3(pos.x, pos.y, pos.z));
+
+			return false;
+		}
+
+		break;
+
+	case MOVE_KEY::DOWN:
+		//壁
+		if (m_map.GetGridNam() / 2 <= pos.z)
+		{
+			this->ResetPlayerMove(player, MOVE_KEY::DOWN, Vector3(pos.x, pos.y, pos.z));
+
+			return false;
+		}
+
+		//敵
+		if (m_flag[datapos].GetFlagType() != FLAGMAP_TIP::NONE&& m_flag[datapos].GetFlagType() != player.GetPlayerColor())
+		{
+			this->ResetPlayerMove(player, MOVE_KEY::DOWN, Vector3(pos.x, pos.y, pos.z));
+
+			return false;
+		}
+		break;
+
+	case MOVE_KEY::RIGHT:
+		//壁
+		if (m_map.GetGridNam() / 2 <= pos.x)
+		{
+			this->ResetPlayerMove(player, MOVE_KEY::RIGHT, Vector3(pos.x, pos.y, pos.z));
+
+			return false;
+		}
+
+		//敵
+		if (m_flag[datapos].GetFlagType() != FLAGMAP_TIP::NONE&& m_flag[datapos].GetFlagType() != player.GetPlayerColor())
+		{
+			this->ResetPlayerMove(player, MOVE_KEY::RIGHT, Vector3(pos.x, pos.y, pos.z));
+
+			return false;
+		}
+		break;
+
+	case MOVE_KEY::LEFT:
+		if (-(m_map.GetGridNam() / 2) >= pos.x)
+		{
+			this->ResetPlayerMove(player, MOVE_KEY::LEFT, Vector3(pos.x, pos.y, pos.z));
+
+			return false;
+		}
+
+		//敵
+		if (m_flag[datapos].GetFlagType() != FLAGMAP_TIP::NONE&& m_flag[datapos].GetFlagType() != player.GetPlayerColor())
+		{
+			this->ResetPlayerMove(player, MOVE_KEY::LEFT, Vector3(pos.x, pos.y, pos.z));
+
+			return false;
+		}
+		break;
+	}
+
+	return true;
+}
+
+/// <summary>
+/// 確認したプレイヤーの移動をなしにする
+/// </summary>
+/// <param name="player">確認したプレイヤー</param>
+/// <param name="key">選択されていた移動先</param>
+/// <param name="resetPos">なしにして戻るときの座標</param>
+void Play::ResetPlayerMove(Player& player, MOVE_KEY key, Vector3 resetPos)
+{
+		player.ResetMoveKey(key);
+
+		player.SetTranslation(Vector3(resetPos));
+}
+
+//public関数========================================================================================
 
 Play::Play()
 	: m_gameManager(ROLLDICE)
-
-	, m_RedFlag(nullptr), m_BlueFlag(nullptr)
-	, m_GreenFlag(nullptr), m_yerowllFlag(nullptr)
 {
 	//カメラ
 	Scene::m_camera = new DebugCamera(Scene::s_width, Scene::s_height);
@@ -43,13 +174,9 @@ void Play::Initialize()
 
 	int gridNam = m_map.GetGridNam();
 
-	//フラグマップ
-	m_flagMAP = new FLAGMAP_TIP[gridNam * gridNam];
+	//フラグ
+	m_flag = new Flag[gridNam * gridNam];
 
-	for (int i = 0; i < gridNam * gridNam; i++)
-	{
-		m_flagMAP[i] = FLAGMAP_TIP::NONE;
-	}
 	//グリット
 	m_grid.SetWonRowNam(gridNam);
 	m_grid.Initialize();
@@ -67,12 +194,34 @@ void Play::Initialize()
 		m_player[i].SetPlayerNamber(i);
 		m_player[i].CreatePlayer(gridNam);
 		m_player[i].Initialize();
+
+		//初期位置に旗を作る
+		Vector3 playerPos = m_player[i].GetPosition();//プレイヤーの今のポジション
+
+		int gritNamHalf = m_map.GetGridNam() / 2;		//一列当たりのマスの数の半分
+		int datapos = gritNamHalf + m_player[i].GetPosition().x + (((gritNamHalf + m_player[i].GetPosition().z)) * m_map.GetGridNam());//一次元配列の位置
+
+		float x = datapos % m_map.GetGridNam() - gritNamHalf;//x座標
+		float y = 0;//y座標
+		if (m_map.GetMapDate(datapos) == MAP::MAP_NAME::MOUNT1)
+		{
+			y = 0.5;
+		}
+
+		if (m_map.GetMapDate(datapos) == MAP::MAP_NAME::MOUNT2)
+		{
+			y = 1.0f;
+		}
+		float z = datapos / m_map.GetGridNam() - (m_map.GetGridNam() / 2);//z座標
+
+		//自分のフラグを立てる
+		m_flag[datapos].CreateFlag(m_player[i].GetPlayerColor(), x, y, z);
 	}
 
 	m_playerState[0].playing = true;
 
-	//フラグ
-	m_RedFlag = new Obj3D;
+	
+	
 	
 	//サイコロ
 	/*m_dice.roll();
@@ -103,6 +252,26 @@ void Play::Update()
 		if (m_playerState[i].playing == true)
 		{
 			static int countTime = 0;
+
+			int DecreaseDice = 1;//サイコロの減らす数
+			Vector3 playerPos = m_player[i].GetPosition();//プレイヤーの今のポジション
+
+			
+			int gritNamHalf = m_map.GetGridNam() / 2;		//一列当たりのマスの数の半分
+			int datapos = gritNamHalf + m_player[i].GetPosition().x + (((gritNamHalf + m_player[i].GetPosition().z)) * m_map.GetGridNam());//一次元配列の位置
+
+			float x = datapos % m_map.GetGridNam() - gritNamHalf;//x座標
+			float y = 0;//y座標
+			if (m_map.GetMapDate(datapos) == MAP::MAP_NAME::MOUNT1)
+			{
+				y = 0.5;
+			}
+
+			if (m_map.GetMapDate(datapos) == MAP::MAP_NAME::MOUNT2)
+			{
+				y = 1.0f;
+			}
+			float z = datapos / m_map.GetGridNam() - (m_map.GetGridNam() / 2);//z座標
 
 			//今プレイしているモード
 			switch (m_gameManager)
@@ -154,12 +323,43 @@ void Play::Update()
 				
 				break;
 			case MOVE://移動
-				m_player[i].Move(m_map.GetGridNam());
+
+				datapos += this->ValueToCalculateNextData(m_player[i]);//次のデータ座標を計算する
+
+				//移動できるか確認する
+				if (!this->MoveChecker(m_player[i], datapos))
+				{
+					m_gameManager = MAPGIMMICK;
+
+					break;
+				}
+
+				x = datapos % m_map.GetGridNam() - gritNamHalf;//x座標
+				z = datapos / m_map.GetGridNam() - (m_map.GetGridNam() / 2);//z座標
+
+				//フラグが立っていない場合
+				if (m_flag[datapos].GetFlagType() == FLAGMAP_TIP::NONE)
+				{
+					m_player[i].Move(m_map.GetGridNam());
+					//自分のフラグを立てる
+					m_flag[datapos].CreateFlag(m_player[i].GetPlayerColor(), x, y, z);
+				}
+				else
+				{
+					//自分のフラグの場合移動にかかるコストを一つ減らす
+					if (m_flag[datapos].GetFlagType() == m_player[i].GetPlayerColor())
+					{
+						m_player[i].Move(m_map.GetGridNam());
+
+						DecreaseDice -= 1;
+					}
+				}
+
+				
 
 				m_gameManager = MAPGIMMICK;
 
-				m_countDice--;
-
+				m_countDice -= DecreaseDice;
 				break;
 
 			case MAPGIMMICK://ギミック
@@ -197,10 +397,15 @@ void Play::Update()
 	}
 
 	
-
 	for (int i = 0; i < PLAYERNAM; i++)
 	{
 		m_player[i].Update();
+	}
+
+	//旗
+	for (int i = 0; i < m_map.GetGridNam() * m_map.GetGridNam(); i++)
+	{
+		m_flag[i].Update();
 	}
 }
 
@@ -214,19 +419,22 @@ void Play::Render()
 	m_effect->Apply(DirectXResourse::m_d3dContext.Get());
 	DirectXResourse::m_d3dContext->IASetInputLayout(m_inputLayout.Get());
 
+	//床
 	m_glound.Render();
+	//マップ
 	m_map.Render();
+	//マス目
 	m_grid.Render(); 
 
+	//プレイヤー	
 	for (int i = 0; i < PLAYERNAM; i++)
 	{
 		m_player[i].Render();
-	}
-	
-	for (int i = 0; i < PLAYERNAM; i++)
-	{
+
+		//行動するプレイヤーならば
 		if (m_playerState[i].playing == true)
 		{
+			//サイコロの表示
 			if (m_playerState[i].RollTwoDice == false)
 			{
 				m_dice[0].SetDiceNamber(m_countDice);
@@ -242,8 +450,18 @@ void Play::Render()
 			}
 		}
 	}
+
+	//旗
+	for (int i = 0; i < m_map.GetGridNam() * m_map.GetGridNam(); i++)
+	{
+		m_flag[i].Render();
+	}
+
 	//デバック用////////////////////////////////////////////////////////////////
 	//シーン名を表示
 	Scene::m_text->Render(L"PlayScene");
 	////////////////////////////////////////////////////////////////////////////
 }
+
+
+

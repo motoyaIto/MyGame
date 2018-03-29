@@ -13,6 +13,7 @@
 #include "..//..//MAP//MAP.h"
 #include "..//..//Player//Player.h"
 #include "..//..//Dice//Dice.h"
+#include "..//..//Flag//Flag.h"
 
 #include "..//..//DirectXResourse//Obj3D//Obj3D.h"
 
@@ -37,19 +38,13 @@ private:
 		bool RollTwoDice;
 	};
 	
-	enum FLAGMAP_TIP
-	{
-		NONE,
-		RED,	//赤
-		BLUE,	//青
-		GREEN,	//緑
-		YELLOW,	//黄色
-	};
+	
+	
 
 	GameManager m_gameManager;//ゲームのコントローラー
 
 	MAP m_map;//マップ
-	FLAGMAP_TIP* m_flagMAP;
+	Flag* m_flag;
 	Grid m_grid;//グリット
 	Glound m_glound;//床
 
@@ -59,10 +54,17 @@ private:
 	Dice m_dice[DICENAM];//サイコロ
 	int m_countDice;//ダイスからの移動
 
-	Obj3D* m_RedFlag;
-	Obj3D* m_BlueFlag;
-	Obj3D* m_GreenFlag;
-	Obj3D* m_yerowllFlag;
+	//Obj3D* m_RedFlag;		//フラグ(赤)
+	//Obj3D* m_BlueFlag;		//フラグ(青)
+	//Obj3D* m_GreenFlag;		//フラグ(緑)
+	//Obj3D* m_yerowllFlag;	//フラグ(黄色)
+
+private:
+	int ValueToCalculateNextData(Player& player);//次の移動先のデータの位置を計算するための値
+
+	bool MoveChecker(Player& player, int datapos);//移動できる(true)出来ない(false)
+
+	void ResetPlayerMove(Player& player, MOVE_KEY key, Vector3 resetPos); //確認したプレイヤーの移動をなしにする
 
 public:
 	Play();
@@ -72,4 +74,5 @@ public:
 	void Update() override;
 	void Render() override;
 
+	
 };

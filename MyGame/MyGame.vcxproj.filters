@@ -59,6 +59,12 @@
     <Filter Include="Camera\DebugCamera">
       <UniqueIdentifier>{c88777be-1436-46bf-80a2-2c45888d26d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Flag">
+      <UniqueIdentifier>{a75d571d-8fe4-4d60-bbeb-24b9f9291156}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Constant">
+      <UniqueIdentifier>{14954d2d-b007-4dbc-8a48-007c651ee39a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -121,6 +127,12 @@
     <ClInclude Include="Camera\DebugCamera\DebugCamera.h">
       <Filter>Camera\DebugCamera</Filter>
     </ClInclude>
+    <ClInclude Include="Flag\Flag.h">
+      <Filter>Flag</Filter>
+    </ClInclude>
+    <ClInclude Include="Constant\Constant.h">
+      <Filter>Constant</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -179,6 +191,9 @@
     </ClCompile>
     <ClCompile Include="Camera\DebugCamera\DebugCamera.cpp">
       <Filter>Camera\DebugCamera</Filter>
+    </ClCompile>
+    <ClCompile Include="Flag\Flag.cpp">
+      <Filter>Flag</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
