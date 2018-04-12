@@ -35,6 +35,7 @@ protected:
 
 	Camera* m_camera;	//カメラ
 	Text* m_text;		//テキスト
+	bool m_state;		//プレイ中(true)していない(false)
 
 public:
 	Scene();
@@ -45,6 +46,7 @@ public:
 	virtual void Render();
 
 public://geter
+	bool GetState() { return m_state; }
 
 public://setter
 	static void SetWidth(int width) { s_width = width; }

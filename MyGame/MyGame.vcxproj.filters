@@ -65,6 +65,15 @@
     <Filter Include="Constant">
       <UniqueIdentifier>{14954d2d-b007-4dbc-8a48-007c651ee39a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scene\Title">
+      <UniqueIdentifier>{a92ddc5e-18a6-400b-80b8-915d56c66695}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Select">
+      <UniqueIdentifier>{b9d58980-31c2-4549-9497-e209f2791f12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Result">
+      <UniqueIdentifier>{aab06bec-6dd1-4d7b-a1ef-5482a1e0997c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -133,6 +142,15 @@
     <ClInclude Include="Constant\Constant.h">
       <Filter>Constant</Filter>
     </ClInclude>
+    <ClInclude Include="Scene\Title\Title.h">
+      <Filter>Scene\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\Select\Select.h">
+      <Filter>Scene\Select</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\Result\Result.h">
+      <Filter>Scene\Result</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -194,6 +212,15 @@
     </ClCompile>
     <ClCompile Include="Flag\Flag.cpp">
       <Filter>Flag</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\Title\Title.cpp">
+      <Filter>Scene\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\Select\Select.cpp">
+      <Filter>Scene\Select</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\Result\Result.cpp">
+      <Filter>Scene\Result</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

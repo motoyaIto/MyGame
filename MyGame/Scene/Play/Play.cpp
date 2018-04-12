@@ -144,7 +144,8 @@ void Play::ResetPlayerMove(Player& player, MOVE_KEY key, Vector3 resetPos)
 //public関数========================================================================================
 
 Play::Play()
-	: m_gameManager(ROLLDICE)
+	: Scene()
+	, m_gameManager(ROLLDICE)
 {
 	//カメラ
 	Scene::m_camera = new DebugCamera(Scene::s_width, Scene::s_height);
@@ -407,6 +408,18 @@ void Play::Update()
 	{
 		m_flag[i].Update();
 	}
+
+	// デバック用////////////////////////////////////////////////////////////////
+	//キーボード
+	m_keyTracker.Update(m_keyboard->GetState());
+
+	DirectX::Keyboard::State keyState = m_keyboard->GetState();
+	//シーン切替
+	if (keyState.A && !m_oldKeyState.A)
+	{
+		m_state = false;
+	}
+	////////////////////////////////////////////////////////////////////////////
 }
 
 void Play::Render()

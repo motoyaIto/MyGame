@@ -20,8 +20,9 @@ Scene::Scene()
 	Obj3D::InitializeStatic(m_camera);
 
 	//キーボード
+	if(!m_keyboard)
 	m_keyboard = new DirectX::Keyboard();
-
+	
 	m_effect = new DirectX::BasicEffect(DirectXResourse::m_d3dDevice.Get());
 	
 	m_effect->SetView(m_camera->GetView());
@@ -32,6 +33,8 @@ Scene::Scene()
 
 	m_effect->GetVertexShaderBytecode(&shaderByCode, &byteCodeLength);
 	DirectXResourse::m_d3dDevice->CreateInputLayout(DirectX::VertexPositionColor::InputElements, DirectX::VertexPositionColor::InputElementCount, shaderByCode, byteCodeLength, m_inputLayout.GetAddressOf());
+
+	m_state = true;
 }
 
 Scene::~Scene()
