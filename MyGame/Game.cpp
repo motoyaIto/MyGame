@@ -6,6 +6,7 @@
 #include "Game.h"
 
 #include "Mouse//Mouse.h"
+#include "KeyboradUtil\//KeyboradUtil.h"
 
 extern void ExitGame();
 
@@ -48,9 +49,12 @@ void Game::Initialize(HWND window, int width, int height)
 	Obj3D::InitializeStatic(m_camera.get());
 
 	//マウス
-	MouseCircumference* mouse = MouseCircumference::GetInstans();
-	mouse->SetMouseInWindow(window);
+	MouseCircumference::GetInstans()->SetMouseInWindow(window);
 
+
+	//キーボード
+	KeyboradUtil::GetInstans();
+	
 	//シーンマネージャー
 	m_sceneManager = std::make_unique<SceneManager>();
 	m_sceneManager->Initialize();
@@ -77,8 +81,16 @@ void Game::Update(DX::StepTimer const& timer)
 
     // TODO: Add your game logic here.
 
+	//マウス
+	MouseCircumference::GetInstans()->Update();
+
+	//キーボード
+	KeyboradUtil::GetInstans()->Update();
+
 	//シーンマネージャーの更新
 	m_sceneManager->Update();
+
+	KeyboradUtil::GetInstans()->SetOldKeyState();
 
     elapsedTime;
 }

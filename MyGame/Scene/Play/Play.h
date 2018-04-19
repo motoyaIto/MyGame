@@ -1,5 +1,5 @@
 //
-//playシーン
+//プレイシーン
 //
 //2017/11/27
 //Ito Motoya
@@ -40,7 +40,7 @@ private:
 	
 	
 	
-
+	DirectX::Keyboard::State m_oldKeyState;
 	GameManager m_gameManager;//ゲームのコントローラー
 
 	MAP m_map;//マップ

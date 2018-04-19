@@ -6,11 +6,11 @@
 //
 #pragma once
 
-#include "Comand//Comand.h"
-
 #include <d3d11_1.h>
 #include <Keyboard.h>
 
+#include "Comand//Comand.h"
+#include "..//..//KeyboradUtil//KeyboradUtil.h"
 
 class UpComand : public Comand
 {
@@ -49,7 +49,7 @@ private:
 	DirectX::Keyboard::State m_oldKeyState;
 
 public:
-	void HandleInput(Actor& Actor, DirectX::Keyboard& keyboard);
+	void HandleInput(Actor& Actor, KeyboradUtil& keybord);
 
 public://setter
 	void SetComandUp(Comand* cmd) { buttonUp = cmd; }//è„ÉLÅ[

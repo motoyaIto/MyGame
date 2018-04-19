@@ -7,15 +7,18 @@
 
 #include <d3d11_1.h>
 
+
 #include <Effects.h>
 #include <Keyboard.h>
 #include <SimpleMath.h>
 #include <VertexTypes.h>
 
+
 #include "..//Camera//Camera.h"
 #include "..//Camera//DebugCamera//DebugCamera.h"
 #include "..//DirectXResourse//Text//Text.h"
 #include "..//Mouse//Mouse.h"
+#include "..//KeyboradUtil//KeyboradUtil.h"
 
 class Scene
 {
@@ -30,21 +33,22 @@ protected:
 	Microsoft::WRL::ComPtr<ID3D11InputLayout> m_inputLayout;
 	DirectX::BasicEffect* m_effect;
 
-	DirectX::Keyboard* m_keyboard;//キーボード
-	DirectX::Keyboard::KeyboardStateTracker m_keyTracker;//キーボードトラッカー
-
+	
+	KeyboradUtil* m_keyborad;
 	Camera* m_camera;	//カメラ
 	Text* m_text;		//テキスト
+	bool m_state;		//プレイ中(true)していない(false)
 
 public:
 	Scene();
 	virtual ~Scene();
 
-	virtual void Initialize();
-	virtual void Update();
-	virtual void Render();
+	virtual void Initialize() = 0;
+	virtual void Update()  = 0;
+	virtual void Render()  = 0;
 
 public://geter
+	bool GetState() { return m_state; }
 
 public://setter
 	static void SetWidth(int width) { s_width = width; }

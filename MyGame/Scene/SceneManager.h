@@ -11,7 +11,17 @@
 class SceneManager
 {
 private:
-	Scene* m_scene;
+	enum SCENE_ID
+	{
+		TITLE,
+		SELECT,
+		PLAY,
+		RESULT,
+
+		MAX,
+	};
+	static int m_selected;
+	static Scene* m_scene;
 
 public:
 	SceneManager();
@@ -21,5 +31,5 @@ public:
 	void Update();
 	void Render();
 
-
+	static void ChangeScene(int id);
 };
