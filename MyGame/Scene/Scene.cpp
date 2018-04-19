@@ -20,8 +20,7 @@ Scene::Scene()
 	Obj3D::InitializeStatic(m_camera);
 
 	//キーボード
-	if(!m_keyboard)
-	m_keyboard = new DirectX::Keyboard();
+	m_keyborad = KeyboradUtil::GetInstans();
 	
 	m_effect = new DirectX::BasicEffect(DirectXResourse::m_d3dDevice.Get());
 	
@@ -38,22 +37,6 @@ Scene::Scene()
 }
 
 Scene::~Scene()
-{
-	//delete m_camera;
-	//delete m_text;
-}
-
-void Scene::Initialize()
-{
-	
-}
-
-void Scene::Update()
-{
-	
-}
-
-void Scene::Render()
 {
 	
 }

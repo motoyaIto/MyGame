@@ -74,6 +74,9 @@
     <Filter Include="Scene\Result">
       <UniqueIdentifier>{aab06bec-6dd1-4d7b-a1ef-5482a1e0997c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="KeyboradUtil">
+      <UniqueIdentifier>{6064cd55-4fda-4238-b661-9f4f3dd3a243}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -151,6 +154,9 @@
     <ClInclude Include="Scene\Result\Result.h">
       <Filter>Scene\Result</Filter>
     </ClInclude>
+    <ClInclude Include="KeyboradUtil\KeyboradUtil.h">
+      <Filter>KeyboradUtil</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -221,6 +227,9 @@
     </ClCompile>
     <ClCompile Include="Scene\Result\Result.cpp">
       <Filter>Scene\Result</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyboradUtil\KeyboradUtil.cpp">
+      <Filter>KeyboradUtil</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

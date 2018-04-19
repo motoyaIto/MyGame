@@ -26,14 +26,9 @@ void Result::Initialize()
 
 void Result::Update()
 {
-	//キーボード
-	m_keyTracker.Update(m_keyboard->GetState());
-
-	DirectX::Keyboard::State keyState = m_keyboard->GetState();
-
 	//デバック用////////////////////////////////////////////////////////////////
 	//シーン切替
-	if (keyState.A && !m_oldKeyState.A)
+	if (m_keyborad->GetKeyDown(DirectX::Keyboard::Space))
 	{
 		m_state = false;
 	}
@@ -44,6 +39,6 @@ void Result::Render()
 {
 	//デバック用////////////////////////////////////////////////////////////////
 	//シーン名を表示
-	Scene::m_text->Render(L"TitleScene");
+	Scene::m_text->Render(L"ResultScene");
 	////////////////////////////////////////////////////////////////////////////
 }

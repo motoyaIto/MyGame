@@ -57,7 +57,7 @@ public:
 	void Update();
 	void Render();
 
-	void InputHandlerUpdate(DirectX::Keyboard& keybord);
+	void InputHandlerUpdate(KeyboradUtil& keybord);
 
 	void Move(int gridNam);
 

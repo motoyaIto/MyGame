@@ -47,7 +47,7 @@ void Player::Render()
 	m_player.Render();
 }
 
-void Player::InputHandlerUpdate(DirectX::Keyboard& keybord)
+void Player::InputHandlerUpdate(KeyboradUtil& keybord)
 {
 	m_input.HandleInput(*this, keybord);
 }

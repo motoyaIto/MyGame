@@ -27,14 +27,9 @@ void Select::Initialize()
 
 void Select::Update()
 {
-	//キーボード
-	m_keyTracker.Update(m_keyboard->GetState());
-
-	DirectX::Keyboard::State keyState = m_keyboard->GetState();
-
 	// デバック用////////////////////////////////////////////////////////////////
 	//シーン切替
-	if (keyState.A && !m_oldKeyState.A)
+	if (m_keyborad->GetKeyDown(DirectX::Keyboard::Space))
 	{
 		m_state = false;
 	}

@@ -6,29 +6,26 @@
 //
 #include "ButtonComand.h"
 
-void InputHandler::HandleInput(Actor & Actor, DirectX::Keyboard & keyboard)
+void InputHandler::HandleInput(Actor & Actor, KeyboradUtil& keybord)
 {
-	DirectX::Keyboard::State keyState = keyboard.GetState();
-
-	if (keyState.Up && !m_oldKeyState.Up)
+	if (keybord.GetKeyDown(DirectX::Keyboard::Up))
 	{
 		buttonUp->Execute(Actor);
 	}
 
-	if (keyState.Down && !m_oldKeyState.Down)
+	if (keybord.GetKeyDown(DirectX::Keyboard::Down))
 	{
 		buttonDown->Execute(Actor);
 	}
 
-	if (keyState.Right && !m_oldKeyState.Right)
+	if (keybord.GetKeyDown(DirectX::Keyboard::Right))
 	{
 		buttonRight->Execute(Actor);
 	}
 
-	if (keyState.Left && !m_oldKeyState.Left)
+	if (keybord.GetKeyDown(DirectX::Keyboard::Left))
 	{
 		buttonLeft->Execute(Actor);
 	}
 
-	m_oldKeyState = keyState;
 }

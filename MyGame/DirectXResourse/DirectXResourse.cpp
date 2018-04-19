@@ -9,6 +9,17 @@
 Microsoft::WRL::ComPtr<ID3D11Device> DirectXResourse::m_d3dDevice;//デバイス
 Microsoft::WRL::ComPtr<ID3D11DeviceContext> DirectXResourse::m_d3dContext;//デバイスコンテキスト								
 
+
+ /// <summary>
+ /// 初期化
+ /// </summary>
+DirectXResourse::DirectXResourse()
+{
+
+}
+
+
+
 /// <summary>
 ///インスタンス化したクラスを返す 
 /// </summary>
@@ -29,12 +40,4 @@ void DirectXResourse::InitializeStatic(Microsoft::WRL::ComPtr<ID3D11Device> d3dD
 {
 	m_d3dDevice = d3dDevice;
 	m_d3dContext = d3dContext;
-}
-
-/// <summary>
-/// イニシャライズ
-/// </summary>
-DirectXResourse::DirectXResourse()
-{
-	
 }

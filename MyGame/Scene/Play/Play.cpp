@@ -233,8 +233,6 @@ void Play::Initialize()
 
 void Play::Update()
 {
-	//マウス
-	MouseCircumference::GetInstans()->Update();
 	//カメラ
 	m_camera->Update();
 
@@ -307,14 +305,12 @@ void Play::Update()
 				}				
 				break;
 			case MOVESERECT://移動先を選ぶ
-				//キーボード
-				m_keyTracker.Update(m_keyboard->GetState());
-				m_player[i].InputHandlerUpdate(*m_keyboard);
+				m_player[i].InputHandlerUpdate(*m_keyborad);
 
 				//移動先が選ばれていない
 				if (!m_player[i].ThcekMoveFlag())
 				{
-					m_player[i].InputHandlerUpdate(*m_keyboard);
+					m_player[i].InputHandlerUpdate(*m_keyborad);
 				}
 				else
 				{
@@ -410,12 +406,8 @@ void Play::Update()
 	}
 
 	// デバック用////////////////////////////////////////////////////////////////
-	//キーボード
-	m_keyTracker.Update(m_keyboard->GetState());
-
-	DirectX::Keyboard::State keyState = m_keyboard->GetState();
 	//シーン切替
-	if (keyState.A && !m_oldKeyState.A)
+	if (m_keyborad->GetKeyDown(DirectX::Keyboard::Space))
 	{
 		m_state = false;
 	}

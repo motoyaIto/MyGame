@@ -177,6 +177,7 @@
     <ClInclude Include="Flag\Flag.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Glound\Glound.h" />
+    <ClInclude Include="KeyboradUtil\KeyboradUtil.h" />
     <ClInclude Include="MAP\MAP.h" />
     <ClInclude Include="Mouse\Mouse.h" />
     <ClInclude Include="MyMas\MyMas.h" />
@@ -205,6 +206,7 @@
     <ClCompile Include="Flag\Flag.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Glound\Glound.cpp" />
+    <ClCompile Include="KeyboradUtil\KeyboradUtil.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MAP\MAP.cpp" />
     <ClCompile Include="Mouse\Mouse.cpp" />

@@ -1,14 +1,9 @@
 //
-//プレイシーン
-//
-//2017/4/01
-//Ito Motoya
-#pragma once
-//
 //セレクトシーン
 //
 //2017/4/01
 //Ito Motoya
+#pragma once
 #include "..//Scene.h"
 
 class Select : public Scene

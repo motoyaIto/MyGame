@@ -49,6 +49,8 @@ void SceneManager::Update()
 
 			this->ChangeScene(m_selected);
 		}
+
+		m_scene->Initialize();
 	}
 	
 }
