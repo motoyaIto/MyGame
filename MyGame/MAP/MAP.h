@@ -7,6 +7,8 @@
 
 #include"..//DirectXResourse//Obj3D//Obj3D.h"
 
+#include "..//Terrain//Terrain.h"
+
 class MAP
 {
 private:
@@ -42,16 +44,16 @@ private:
 	int* m_flagMap;		//フラグマップ
 	
 	//各オブジェクト
-	Obj3D* m_mount1;
-	Obj3D* m_mount2;
-	Obj3D* m_pond;
-	Obj3D* m_PoisonSwamp;
+	Terrain** m_mountain;
+	Terrain** m_mountain2;
+	Terrain** m_pond;
+	Terrain** m_PoisonSwamp;
 
 private://内部関数
 	void GetCSVFile(int fileNumber);// CSVファイルの読み込み
 
 	// オブジェクトの作成
-	void CreateObj(Obj3D* obj, const wchar_t * objFile, int i, int j, int& count, float height);
+	Obj3D* CreateObj(const wchar_t * objFile, int i, int j, int& count, float height);
 	
 	
 
