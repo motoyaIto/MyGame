@@ -1,32 +1,10 @@
 //
 // Game.h
 //
-#pragma once
-#ifndef GAME
-#define GAME
 
-#include <Windows.h>
+#pragma once
 
 #include "StepTimer.h"
-class Game
-{
-public:
-	//基本ルール
-	MSG Run();
-
-	//コンストラクタ
-	Game(int with, int height);
-
-	//初期化
-	virtual void Initialize(int width, int height);
-
-	//アプデ
-	virtual void Update(const DX::StepTimer& timer);
-};
-#endif//GAME
-
-
-/*#include "StepTimer.h"
 
 #include <memory>
 #include "DirectXResourse//DirectXResourse.h"
@@ -101,4 +79,4 @@ private:
 	std::unique_ptr<SceneManager> m_sceneManager;
 
 	std::unique_ptr<Camera> m_camera;
-};*/
+};

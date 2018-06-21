@@ -175,6 +175,7 @@
     <ClInclude Include="DirectXResourse\Texture\Texture.h" />
     <ClInclude Include="DirectXResourse\Text\Text.h" />
     <ClInclude Include="Flag\Flag.h" />
+    <ClInclude Include="Framework\MyGame.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Glound\Glound.h" />
     <ClInclude Include="KeyboradUtil\KeyboradUtil.h" />
@@ -206,6 +207,7 @@
     <ClCompile Include="DirectXResourse\Texture\Textuer.cpp" />
     <ClCompile Include="DirectXResourse\Text\Text.cpp" />
     <ClCompile Include="Flag\Flag.cpp" />
+    <ClCompile Include="Framework\MyGame.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Glound\Glound.cpp" />
     <ClCompile Include="KeyboradUtil\KeyboradUtil.cpp" />

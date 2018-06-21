@@ -2,7 +2,7 @@
 // Game.cpp
 //
 
-/*#include "pch.h"
+#include "pch.h"
 #include "Game.h"
 
 #include "Mouse//Mouse.h"
@@ -38,7 +38,7 @@ void Game::Initialize(HWND window, int width, int height)
     /*
     m_timer.SetFixedTimeStep(true);
     m_timer.SetTargetElapsedSeconds(1.0 / 60);
-    *//*
+    */
 	//ÉJÉÅÉâ
 	m_camera = std::make_unique<Camera>(width, height);
 
@@ -413,4 +413,4 @@ void Game::OnDeviceLost()
     CreateDevice();
 
     CreateResources();
-}*/
+}
