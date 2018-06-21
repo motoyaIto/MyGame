@@ -192,6 +192,8 @@
     <ClInclude Include="Scene\Select\Select.h" />
     <ClInclude Include="Scene\Title\Title.h" />
     <ClInclude Include="StepTimer.h" />
+    <ClInclude Include="Terrain\Mountain\Mountain.h" />
+    <ClInclude Include="Terrain\Terrain.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera\Camera.cpp" />
@@ -225,6 +227,8 @@
     <ClCompile Include="Scene\SceneManager.cpp" />
     <ClCompile Include="Scene\Select\Select.cpp" />
     <ClCompile Include="Scene\Title\Title.cpp" />
+    <ClCompile Include="Terrain\Mountain\Mountain.cpp" />
+    <ClCompile Include="Terrain\Terrain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />

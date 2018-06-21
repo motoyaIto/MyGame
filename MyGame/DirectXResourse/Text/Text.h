@@ -29,7 +29,8 @@ public:
 	~Text();
 
 	void Render(const wchar_t* output);
-
+	void Render(int* output);
+	void Render(float* output);
 public://getter
 
 public://setter

@@ -77,6 +77,12 @@
     <Filter Include="KeyboradUtil">
       <UniqueIdentifier>{6064cd55-4fda-4238-b661-9f4f3dd3a243}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Terrain">
+      <UniqueIdentifier>{6733242e-fe8b-4132-90b1-1017241a89ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Terrain\Mountain">
+      <UniqueIdentifier>{9f910086-c337-440b-a104-cd9e8c8e5bf3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -157,6 +163,12 @@
     <ClInclude Include="KeyboradUtil\KeyboradUtil.h">
       <Filter>KeyboradUtil</Filter>
     </ClInclude>
+    <ClInclude Include="Terrain\Terrain.h">
+      <Filter>Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="Terrain\Mountain\Mountain.h">
+      <Filter>Terrain\Mountain</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -191,9 +203,6 @@
     </ClCompile>
     <ClCompile Include="Scene\SceneManager.cpp">
       <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="MAP\MAP.cpp">
-      <Filter>MAP</Filter>
     </ClCompile>
     <ClCompile Include="Glound\Glound.cpp">
       <Filter>Glound</Filter>
@@ -230,6 +239,15 @@
     </ClCompile>
     <ClCompile Include="KeyboradUtil\KeyboradUtil.cpp">
       <Filter>KeyboradUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="MAP\MAP.cpp">
+      <Filter>MAP</Filter>
+    </ClCompile>
+    <ClCompile Include="Terrain\Terrain.cpp">
+      <Filter>Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="Terrain\Mountain\Mountain.cpp">
+      <Filter>Terrain\Mountain</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

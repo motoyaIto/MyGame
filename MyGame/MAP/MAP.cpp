@@ -13,6 +13,8 @@
 #include <assert.h>
 #include <SimpleMath.h>
 
+#include "..//Terrain//Mountain//Mountain.h"
+
 using namespace std;
 using namespace DirectX;
 using namespace DirectX::SimpleMath;
@@ -75,13 +77,14 @@ void MAP::GetCSVFile(int fileNumber)
 /// <param name="j">for文2</param>
 /// <param name="count">オブジェクトカウンター</param>
 /// <param name="height">高さ</param>
-void MAP::CreateObj(Obj3D* obj, const wchar_t * objFile, int i, int j, int& count, float height)
+Obj3D* MAP::CreateObj(const wchar_t * objFile, int i, int j, int& count, float height)
 {
-	obj[count].LoadModel(objFile);
-	obj[count].SetTranslation(Vector3(j - (m_gridNam / 2 - 0.5f), height, i - (m_gridNam / 2 - 0.5f)));
-	obj[count].SetScale(Vector3(1.0f, 1.0f, 1.0f));
+	Obj3D obj;
+	obj.LoadModel(objFile);
+	obj.SetTranslation(Vector3(j - (m_gridNam / 2 - 0.5f), height, i - (m_gridNam / 2 - 0.5f)));
+	obj.SetScale(Vector3(1.0f, 1.0f, 1.0f));
 
-	count++;
+	return &obj;
 }
 
 //public関数===========================================================
@@ -92,8 +95,8 @@ MAP::MAP()
 
 	, m_CSVDateNam(0) , m_map(nullptr), m_gridNam(0)
 
-	, m_mount1(nullptr), m_mount2(nullptr)
-	, m_pond(nullptr), m_PoisonSwamp(nullptr)
+	, m_mountain(nullptr), m_mountain2(nullptr)
+	//, m_pond(nullptr), m_PoisonSwamp(nullptr)
 {
 	
 }
@@ -101,10 +104,8 @@ MAP::MAP()
 MAP::~MAP()
 {
 	delete[] m_map;
-	delete[] m_mount1;
-	delete[] m_mount2;
-	delete[] m_pond;
-	delete[] m_PoisonSwamp;
+	//delete[] m_pond;
+	//delete[] m_PoisonSwamp;
 }
 
 /// <summary>
@@ -148,16 +149,26 @@ void MAP::Initialize()
 	}
 
 	//オブジェクトの初期化
-	m_mount1 = new Obj3D[m_countMount1 + 1];
-	m_countMount1 = 0;
+	//山1
+	m_mountain = new Terrain*[m_countMount1 + 1];
+	for (int i = 0; i < m_countMount1 + 1; i++)
+	{
+		m_mountain[i] = new Mountain();
+	}
 
-	m_mount2 = new Obj3D[m_countMount2];
-	m_countMount2 = 0;
+	int countMountainArray = 0;
 
-	m_pond = new Obj3D[m_countPOND];
+	//山2
+	m_mountain2 = new Terrain*[m_countMount2 + 1];
+	for (int i = 0; i < m_countMount2 + 1; i++)
+	{
+		m_mountain2[i] = new Mountain();
+	}
+
+	//m_pond = new Obj3D[m_countPOND];
 	m_countPOND = 0;
 
-	m_PoisonSwamp = new Obj3D[m_countPOISON_SWAMP];
+	//m_PoisonSwamp = new Obj3D[m_countPOISON_SWAMP];
 	m_countPOISON_SWAMP = 0;
 
 	//オブジェクトの作成
@@ -173,22 +184,25 @@ void MAP::Initialize()
 
 			case MOUNT1://山1
 			case MOUNT2://山2
-				this->CreateObj(m_mount1, L"Resources/Mount1.cmo", i, j, m_countMount1, 0.0f);
-
-				if (m_map[i * (int)m_gridNam + j] >= MOUNT2)
+				m_mountain[countMountainArray]->CreateTerrain(m_gridNam, i, j);
+				
+				//this->CreateObj(L"Resources/Mount1.cmo", i, j, m_countMount1, 0.0f);
+				
+				/*if (m_map[i * (int)m_gridNam + j] >= MOUNT2)
 				{
-					this->CreateObj(m_mount2, L"Resources/Mount2.cmo", i, j, m_countMount2, 0.5f);
-				}
+					this->CreateObj(L"Resources/Mount2.cmo", i, j, m_countMount2, 0.5f);
+				}*/
 
+				countMountainArray++;
 				break;
 
 			case POND://池
-				this->CreateObj(m_pond, L"Resources/Pond.cmo", i, j, m_countPOND, 0.05f);
+				//this->CreateObj(L"Resources/Pond.cmo", i, j, m_countPOND, 0.05f);
 
 				break;
 
 			case POISON_SWAMP://毒沼
-				this->CreateObj(m_PoisonSwamp, L"Resources/PoisonSwamp.cmo", i, j, m_countPOISON_SWAMP, 0.05f);
+				//this->CreateObj(L"Resources/PoisonSwamp.cmo", i, j, m_countPOISON_SWAMP, 0.05f);
 
 				break;
 			}
@@ -203,25 +217,25 @@ void MAP::Update()
 	//山1
 	for (int i = 0; i < m_countMount1; i++)
 	{
-		m_mount1[i].UpdateO();
+		m_mountain[i]->UpdateO();
 	}
 
 	//山2
 	for (int i = 0; i < m_countMount2; i++)
 	{
-		m_mount2[i].UpdateO();
+		//m_mount2[i].UpdateO();
 	}
 
 	//池
 	for (int i = 0; i < m_countPOND; i++)
 	{
-		m_pond[i].UpdateO();
+		//m_pond[i].UpdateO();
 	}
 
 	//毒沼
 	for (int i = 0; i < m_countPOISON_SWAMP; i++)
 	{
-		m_PoisonSwamp[i].UpdateO();
+		//m_PoisonSwamp[i].UpdateO();
 	}
 }
 
@@ -233,25 +247,25 @@ void MAP::Render()
 	//山1
 	for (int i = 0; i < m_countMount1; i++)
 	{
-		m_mount1[i].Render();
+		m_mountain[i]->Render();
 	}
 
 	//山2
 	for (int i = 0; i < m_countMount2; i++)
 	{
-		m_mount2[i].Render();
+		//m_mount2[i].Render();
 	}
 
 	//池
 	for (int i = 0; i < m_countPOND; i++)
 	{
-		m_pond[i].Render();
+		//m_pond[i].Render();
 	}
 
 	//毒沼
 	for (int i = 0; i < m_countPOISON_SWAMP; i++)
 	{
-		m_PoisonSwamp[i].Render();
+		//m_PoisonSwamp[i].Render();
 	}
 
 	//フラグ
